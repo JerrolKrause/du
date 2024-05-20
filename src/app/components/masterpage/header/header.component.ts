@@ -1,5 +1,5 @@
 import { environment } from '$env';
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, HostBinding, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 
@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit {
+  @HostBinding('aria-role') public ariaRole = 'banner';
+
   public isOpen = signal(false);
   public appName = environment.properties.appName;
 
