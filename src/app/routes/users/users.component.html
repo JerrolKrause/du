@@ -1,0 +1,101 @@
+<app-masterpage>
+  @if (api.users.state$ | async; as state) {
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col col-12 col-md-9">
+        <a class="float-end" (click)="refresh()"><app-icons icon="refresh"></app-icons></a>
+        <h1><app-icons icon="users"></app-icons> List of users ({{ state?.data?.length ?? 0 }})</h1>
+        <div class="card">
+          <div class="card-body">
+            <nts-api-state [state]="state">
+              <div class="table-container">
+                @if (!!state.data?.length) {
+                <table class="table table-sm table-striped mb-0 table-mobile">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Phone</th>
+                      <th>Email</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (user of state.data; track user) {
+                    <tr>
+                      <td>
+                        <a [routerLink]="['./' + user.id]">{{ user.name }}</a>
+                      </td>
+                      <td>
+                        <a href="tel:{{ user.phone | phoneNumber }}">{{ user.phone | phoneNumber }}</a>
+                      </td>
+                      <td>
+                        <a href="mailto:{{ user.email }}">{{ user.email }}</a>
+                      </td>
+                      <td>
+                        <div class="text-end">
+                          <a class="edit-user me-3" (click)="edit(user)"><app-icons icon="cog"></app-icons></a>
+                          <a class="delete-user" (click)="delete(user)"><app-icons icon="trash"></app-icons></a>
+                        </div>
+                      </td>
+                    </tr>
+                    }
+                  </tbody>
+                </table>
+                }
+              </div>
+            </nts-api-state>
+            <ng-template>
+              <p>No users found</p>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <div class="col col-12 col-md-3">
+        <div class="card mb-3">
+          <div class="card-body">
+            @if (isEdit()) {
+            <a class="float-end" (click)="editUndo()">Undo</a>
+            } @if (isEdit()) {
+            <h3>Edit existing user</h3>
+            } @if (!isEdit()) {
+            <h3>Add a new user</h3>
+            }
+            <hr class="mb-4" />
+            <form [formGroup]="userForm" (ngSubmit)="save()">
+              <p class="mb-4">
+                <span class="p-float-label w-100">
+                  <input id="name" class="w-100" type="text" pInputText formControlName="name" />
+                  <label for="name">Name</label>
+                </span>
+              </p>
+              <p class="mb-4">
+                <span class="p-float-label w-100">
+                  <input id="email" class="w-100" type="text" pInputText formControlName="email" />
+                  <label for="email">Email</label>
+                </span>
+              </p>
+              <p class="mb-4">
+                <span class="p-float-label w-100">
+                  <input id="phone" class="w-100" type="text" pInputText formControlName="phone" />
+                  <label for="phone">Phone Number</label>
+                </span>
+              </p>
+              <div class="float-end">
+                @if (isEdit()) {
+                <button class="btn btn-primary" type="submit" [disabled]="state.modifying" (click)="save()">
+                  <app-icons icon="cog"></app-icons> Save User
+                </button>
+                } @if (!isEdit()) {
+                <button class="btn btn-primary" type="submit" [disabled]="state.modifying" (click)="save()">
+                  <app-icons icon="plus"></app-icons> Create User
+                </button>
+                }
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</app-masterpage>
