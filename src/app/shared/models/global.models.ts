@@ -46,6 +46,7 @@ export module Models {
   export enum LoanStatus {
     Pending = 'PENDING',
     Complete = 'COMPLETE',
+    Denied = 'DENIED',
   }
 
   export enum LoanType {

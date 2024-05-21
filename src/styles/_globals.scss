@@ -13,6 +13,7 @@
   --Primary-OMF-Sky: #2659d9;
   --Primary-OMF-White: #ffffff;
 
+  --body-padding: 20px;
   @include convert($breakpoints);
   @include convert($colors);
 

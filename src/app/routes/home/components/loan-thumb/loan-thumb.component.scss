@@ -1,0 +1,12 @@
+:host {
+  display: block;
+
+  ::ng-deep .p-card-content {
+    padding: 0;
+  }
+}
+
+p-card {
+  display: block;
+  margin-bottom: var(--body-padding);
+}

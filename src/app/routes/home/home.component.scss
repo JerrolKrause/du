@@ -3,7 +3,20 @@
   background-color: #f3f7fc;
 }
 
-p-card {
-  display: block;
-  margin: 20px;
+section {
+  padding: var(--body-padding);
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: normal;
+  line-height: 24px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 16px;
+  line-height: 16px;
+  margin-bottom: 20px;
+  font-weight: 500;
 }
