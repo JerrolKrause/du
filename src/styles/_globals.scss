@@ -8,6 +8,15 @@
 }
 
 :root {
+  --Font-Gray: #d0d5d8;
+  --Primary-OMF-Black: #1f1f21;
+  --Primary-OMF-Sky: #2659d9;
+  --Primary-OMF-White: #ffffff;
+
   @include convert($breakpoints);
   @include convert($colors);
+}
+
+a {
+  color: var(--Primary-OMF-Sky);
 }
