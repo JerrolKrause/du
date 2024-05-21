@@ -1,4 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import LOANS from '../../../assets/mock-data/loans';
+import { Models } from '../../shared/models';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +9,6 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  constructor() {}
-
-  ngOnInit() {}
-
-  ngOnDestroy() {}
+export class HomeComponent {
+  loans$ = new BehaviorSubject<Models.Loan[]>(LOANS);
 }
