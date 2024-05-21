@@ -2,7 +2,7 @@
   @for (loan of loans$ | async; track loan) {
     <p-card>
       <h2>
-        Personal Loan (<a [routerLink]="['loan', loan.id]">...{{ loan.id }}</a
+        Personal Loan (<a [routerLink]="['loan', loan.id]">{{ loan.id | safeLoanId }}</a
         >)
       </h2>
       <p>We need verify some information in order to finalize your loan application.</p>

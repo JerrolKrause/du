@@ -9,10 +9,11 @@ import { routing } from './home.routes';
 import { CardModule } from 'primeng/card';
 import { HelpPanelComponent } from './components/help-panel/help-panel.component';
 import { HomeComponent } from './home.component';
+import { SafeLoanIdPipe } from './pipes/safe-loan-id.pipe';
 
 @NgModule({
   imports: [CommonModule, SharedModule, routing, MasterPageModule, IconsComponent, CardModule],
-  declarations: [HomeComponent, HelpPanelComponent],
+  declarations: [HomeComponent, HelpPanelComponent, SafeLoanIdPipe],
   providers: [],
   exports: [],
 })
