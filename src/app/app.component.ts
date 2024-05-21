@@ -6,9 +6,13 @@ import { AuthService } from './shared';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  constructor(private auth: AuthService, private dom: DomService) {
+  constructor(
+    private auth: AuthService,
+    private dom: DomService,
+  ) {
     // Manage authentication events. These are subscriptions so for memory management reasons they are managed here instead of the service
     if (this.dom.isBrowser) {
       // Handle logout modal
