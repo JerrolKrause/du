@@ -38,6 +38,9 @@ export module Models {
     id: number;
     type: LoanType;
     status: LoanStatus;
+    ballance?: number;
+    lastPayment?: number;
+    lastPaymentDate?: string;
   }
 
   export enum LoanStatus {
