@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  margin: 0 20px;
+  text-align: center;
+
+  ::ng-deep .p-card-content {
+    padding: 0;
+  }
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: 16px;
+}
+
+p {
+  line-height: 24px;
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  text-decoration: none;
+}
