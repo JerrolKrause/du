@@ -17,24 +17,12 @@
             "main": "./src/main.ts",
             "tsConfig": "./tsconfig.app.json",
             "preserveSymlinks": true,
-            "polyfills": [
-              "zone.js"
-            ],
-            "assets": [
-              "./src/assets",
-              "./src/favicon.ico",
-              "./src/apple-touch-icon.png",
-              "./src/safari-pinned-tab.svg",
-              "./src/manifest.webmanifest"
-            ],
+            "polyfills": ["zone.js"],
+            "assets": ["./src/assets", "./src/favicon.ico", "./src/apple-touch-icon.png", "./src/safari-pinned-tab.svg", "./src/manifest.webmanifest"],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/styles/globals"
-              ]
+              "includePaths": ["src/styles/globals"]
             },
-            "styles": [
-              "./src/styles.scss"
-            ],
+            "styles": ["./src/styles.scss"],
             "scripts": [
               {
                 "input": "node_modules/document-register-element/build/document-register-element.js",
@@ -154,32 +142,18 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "./tsconfig.app.json",
-              "./tsconfig.spec.json",
-              "cypress/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["./tsconfig.app.json", "./tsconfig.spec.json", "cypress/tsconfig.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         },
@@ -222,9 +196,7 @@
         "prerender": {
           "builder": "@angular-devkit/build-angular:prerender",
           "options": {
-            "routes": [
-              "/"
-            ]
+            "routes": ["/"]
           },
           "configurations": {
             "production": {
@@ -329,12 +301,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "e2e/cypress/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["e2e/cypress/tsconfig.json"],
+            "exclude": ["**/node_modules/**"]
           }
         },
         "cypress-run": {
@@ -378,7 +346,9 @@
     "@schematics/angular:component": {
       "changeDetection": "OnPush",
       "prefix": "app",
-      "style": "scss"
+      "style": "scss",
+      "skipTests": true,
+      "displayBlock": true
     },
     "@schematics/angular:directive": {
       "prefix": "app"
@@ -386,10 +356,6 @@
   },
   "cli": {
     "analytics": false,
-    "schematicCollections": [
-      "@cypress/schematic",
-      "@ntersol/schematics",
-      "@schematics/angular"
-    ]
+    "schematicCollections": ["@ntersol/schematics", "@schematics/angular"]
   }
 }
