@@ -1,8 +1,17 @@
 :host {
   display: block;
 
-  ::ng-deep .p-card-content {
-    padding: 0;
+  ::ng-deep {
+    .p-card-content {
+      padding: 0;
+    }
+
+    .p-button {
+      font-size: 20px;
+      line-height: 20px;
+      padding: 9px 19px;
+      color: var(--Primary-OMF-Sky);
+    }
   }
 }
 

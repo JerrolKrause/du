@@ -10,7 +10,7 @@
       </header>
 
       <p>We need verify some information in order to finalize your loan application.</p>
-      <p-button label="Start Verification" [outlined]="true" [rounded]="true" />
+      <p-button label="Start verification" [outlined]="true" [rounded]="true" />
     }
     @case (LoanStatus.Active) {
       <header>
@@ -27,7 +27,7 @@
       <p class="current-ballance-label">Current Ballance</p>
       <p class="last-payment">Last Payment: {{ loan().lastPayment | currency }} on {{ loan().lastPaymentDate | date }}</p>
 
-      <p-button label="Make a Payment" [outlined]="true" [rounded]="true" />
+      <p-button label="Make a payment" [outlined]="true" [rounded]="true" />
     }
     <!-- TODO: Add more state -->
     @case (LoanStatus.PaidOff) {
