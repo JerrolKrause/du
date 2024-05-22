@@ -8,6 +8,10 @@ const routes: Routes = [
   },
   {
     path: '~',
+    loadChildren: () => import('./help-panel/help-panel.component').then(m => m.HelpPanelComponent),
+  },
+  {
+    path: '~',
     loadChildren: () => import('./icons/icons.component').then(m => m.IconsComponent),
   },
   // Angular libs
