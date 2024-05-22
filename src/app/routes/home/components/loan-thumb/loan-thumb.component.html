@@ -10,12 +10,12 @@
       </header>
 
       <p>We need verify some information in order to finalize your loan application.</p>
-      <p-button label="Start verification" [outlined]="true" [rounded]="true" />
+      <p-button label="Start verification" [outlined]="true" [rounded]="true" [routerLink]="['loan', loan().id]" />
     }
     @case (LoanStatus.Active) {
       <header>
         <h2>
-          Personal Loan (<a [routerLink]="['loan', loan().id]">{{ loan().id | safeLoanId }}</a
+          Personal Loan (<a [routerLink]="['servicing', 'loan', loan().id]">{{ loan().id | safeLoanId }}</a
           >)
         </h2>
         <a href="#">
@@ -27,7 +27,7 @@
       <p class="current-ballance-label">Current Ballance</p>
       <p class="last-payment">Last Payment: {{ loan().lastPayment | currency }} on {{ loan().lastPaymentDate | date }}</p>
 
-      <p-button label="Make a payment" [outlined]="true" [rounded]="true" />
+      <p-button label="Make a payment" [outlined]="true" [rounded]="true" [routerLink]="['servicing', 'loan', loan().id]" />
     }
     <!-- TODO: Add more state -->
     @case (LoanStatus.PaidOff) {
