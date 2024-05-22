@@ -1,0 +1,65 @@
+:host {
+  display: block;
+
+  ::ng-deep {
+    .p-card-content {
+      padding: 0;
+    }
+
+    .p-button {
+      font-size: 20px;
+      line-height: 20px;
+      padding: 9px 19px;
+      color: var(--Primary-OMF-Sky);
+    }
+  }
+}
+
+p-card {
+  display: block;
+  margin-bottom: var(--body-padding);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  margin: 0;
+}
+
+.pending {
+  color: var(--Primary-OMF-Sun);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+p {
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 15px;
+
+  &.current-ballance-label,
+  &.last-payment {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+.current-ballance-amount {
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+fa-icon {
+  color: var(--Primary-OMF-Sky);
+  font-size: 20px;
+}

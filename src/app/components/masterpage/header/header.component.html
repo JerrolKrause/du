@@ -1,10 +1,8 @@
-<header class="p-2">
-  <nav class="nav">
-    <a class="brand pl-2 me-3" [routerLink]="['/']">
-      <strong class="logo">{{ appName }}</strong>
-    </a>
-    <div class="nav-content">
-      <ng-content></ng-content>
-    </div>
-  </nav>
-</header>
+<nav class="ms-4 me-4">
+  <a class="pt-2 pe-2 pb-2" [routerLink]="['/']">
+    <img src="/assets/logos/omf-logo-stacked.svg" alt="One Main Financial" />
+  </a>
+  <div class="nav-content">
+    <ng-content></ng-content>
+  </div>
+</nav>

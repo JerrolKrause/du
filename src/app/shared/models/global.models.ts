@@ -33,6 +33,55 @@ export module Models {
     blue,
     orange,
   }
+
+  export interface LoggedInUser {
+    name: string;
+  }
+
+  export interface Loan {
+    id: number;
+    type: LoanType;
+    status: LoanStatus;
+    ballance?: number;
+    lastPayment?: number;
+    lastPaymentDate?: string;
+  }
+
+  export enum LoanStatus {
+    Pending = 'PENDING',
+    Active = 'ACTIVE',
+    PaidOff = 'PAID_OFF',
+    Denied = 'DENIED',
+  }
+
+  export enum LoanType {
+    Secured = 'SECURED',
+    Unsecured = 'UNSECURED',
+  }
+
+  interface LoanDetails {
+    id: number;
+    type: LoanType;
+    verifications: Verification[];
+  }
+
+  interface Verification {
+    type: VerificationTypes;
+    status: VerificationStatus;
+  }
+
+  enum VerificationTypes {
+    Identity,
+    Income,
+    Vehicle,
+  }
+
+  enum VerificationStatus {
+    New,
+    Submitted,
+    ActionRequired,
+    Verified,
+  }
 }
 
 /**

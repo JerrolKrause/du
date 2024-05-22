@@ -1,3 +1,22 @@
 :host {
   display: block;
+  background-color: #f3f7fc;
+}
+
+section {
+  padding: var(--body-padding);
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 24px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 16px;
+  line-height: 16px;
+  margin-bottom: 20px;
+  font-weight: 500;
 }

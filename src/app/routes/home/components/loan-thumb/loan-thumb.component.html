@@ -1,0 +1,47 @@
+<p-card>
+  @switch (loan().status) {
+    @case (LoanStatus.Pending) {
+      <header>
+        <h2>
+          Personal Loan (<a [routerLink]="['loan', loan().id]">{{ loan().id | safeLoanId }}</a
+          >)
+        </h2>
+        <span class="pending">Pending</span>
+      </header>
+
+      <p>We need verify some information in order to finalize your loan application.</p>
+      <p-button label="Start verification" [outlined]="true" [rounded]="true" />
+    }
+    @case (LoanStatus.Active) {
+      <header>
+        <h2>
+          Personal Loan (<a [routerLink]="['loan', loan().id]">{{ loan().id | safeLoanId }}</a
+          >)
+        </h2>
+        <a href="#">
+          <fa-icon [icon]="faChevronRight"></fa-icon>
+        </a>
+      </header>
+
+      <p class="current-ballance-amount">{{ loan().ballance | currency }}</p>
+      <p class="current-ballance-label">Current Ballance</p>
+      <p class="last-payment">Last Payment: {{ loan().lastPayment | currency }} on {{ loan().lastPaymentDate | date }}</p>
+
+      <p-button label="Make a payment" [outlined]="true" [rounded]="true" />
+    }
+    <!-- TODO: Add more state -->
+    @case (LoanStatus.PaidOff) {
+      <header>
+        <h2>TODO: PAID OFF</h2>
+      </header>
+    }
+    @case (LoanStatus.Denied) {
+      <header>
+        <h2>TODO: PAID OFF</h2>
+      </header>
+    }
+    @default {
+      <h2>Unknown Status</h2>
+    }
+  }
+</p-card>

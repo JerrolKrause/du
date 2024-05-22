@@ -1,12 +1,12 @@
 <app-masterpage>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col col-12 col-md-9">
-        <p>Write cool code</p>
-      </div>
-      <div class="col col-12 col-md-3">
-        <p>Sidebar stuff</p>
-      </div>
-    </div>
-  </div>
+  <section>
+    <h1>Hello, {{ userName$ | async }}</h1>
+    <h2>Accounts</h2>
+
+    @for (loan of loans$ | async; track loan) {
+      <app-loan-thumb [loan]="loan" />
+    }
+
+    <app-help-panel></app-help-panel>
+  </section>
 </app-masterpage>
