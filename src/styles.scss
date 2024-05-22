@@ -1,14 +1,18 @@
+@layer bootstrap, primeng;
+
 /* You can add global styles to this file, and also import other style files */
 // Base CSS Size: 619k
 // New Size: 315k
 
 // Bootstrap
-// Option 1: Import only parts of Bootstrap - 99k
-@import 'bootstrap/scss/bootstrap-utilities';
-@import 'bootstrap/scss/reboot';
+@layer boostrap {
+  // Option 1: Import only parts of Bootstrap - 99k
+  @import 'bootstrap/scss/bootstrap-utilities';
+  @import 'bootstrap/scss/reboot';
 
-// Components
-@import 'bootstrap/scss/grid';
+  // Components
+  @import 'bootstrap/scss/grid';
+}
 
 // Option 2: Import all of Bootstrap - 154k
 // @import 'bootstrap/scss/bootstrap';
@@ -24,7 +28,7 @@
 @import 'primeng/resources/themes/nova/theme.css'; // 134k
 // Option 2: Custom theme using PrimeNG Theme Designer
 // TODO: Update Theme Designer to support PrimeNG 11
-//@import 'styles/theme/nova-light/theme';
+@import 'styles/theme/nova-light/theme';
 
 // 17k
 // Global styling
