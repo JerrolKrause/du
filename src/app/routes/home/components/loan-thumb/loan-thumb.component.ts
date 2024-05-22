@@ -1,6 +1,6 @@
+import { Models } from '$shared';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { Models } from '../../../../shared/models';
 
 @Component({
   selector: 'app-loan-thumb',
