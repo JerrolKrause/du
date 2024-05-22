@@ -1,6 +1,6 @@
 <app-masterpage>
   <section>
-    <h1>Hello, Rachel</h1>
+    <h1>Hello, {{ userName$ | async }}</h1>
     <h2>Accounts</h2>
 
     @for (loan of loans$ | async; track loan) {

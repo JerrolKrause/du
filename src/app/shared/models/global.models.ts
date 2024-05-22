@@ -34,6 +34,10 @@ export module Models {
     orange,
   }
 
+  export interface LoggedInUser {
+    name: string;
+  }
+
   export interface Loan {
     id: number;
     type: LoanType;
