@@ -14,7 +14,7 @@ export default [
   {
     id: 10003456,
     type: Models.LoanType.Secured,
-    status: Models.LoanStatus.Complete,
+    status: Models.LoanStatus.Active,
     ballance: 4278.34,
     lastPayment: 253.28,
     lastPaymentDate: '2024-04-15',
