@@ -1,0 +1,35 @@
+:host {
+  display: flex;
+  width: 100%;
+  background-color: var(--Primary-OMF-Sky);
+  color: var(--Primary-OMF-White);
+  align-items: center;
+  height: 50px;
+  font-size: 15px;
+  line-height: 20px;
+
+  padding-left: var(--body-padding);
+  padding-right: var(--body-padding);
+}
+
+.nav {
+  text-align: left;
+  width: 10%;
+}
+.center {
+  width: 80%;
+  text-align: center;
+}
+
+a {
+  color: var(--Primary-OMF-White);
+}
+
+app-icons {
+  color: var(--Primary-OMF-White);
+  font-size: 20px;
+}
+
+.status {
+  font-weight: 700;
+}

@@ -69,6 +69,7 @@ export module Models {
   export interface LoanDetails {
     id: number;
     type: LoanType;
+    status: LoanStatus;
     verifications: Verification[];
   }
 

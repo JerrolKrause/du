@@ -5,13 +5,14 @@ import { LoanComponent } from '../loan/loan.component';
 import { SharedModule } from '$shared';
 import { CardModule } from 'primeng/card';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { HelpPanelComponent, MasterPageModule } from '../../components';
+import { HelpPanelComponent, IconsComponent, MasterPageModule } from '../../components';
+import { LoanBackNavComponent } from './components/loan-back-nav/loan-back-nav.component';
 import { routing } from './loan.routes';
 import { RouteApiService } from './shared/store/api/route-api.service';
 
 @NgModule({
-  declarations: [LoanComponent],
-  imports: [CommonModule, SharedModule, routing, MasterPageModule, HelpPanelComponent, CardModule, ProgressSpinnerModule],
+  declarations: [LoanComponent, LoanBackNavComponent],
+  imports: [CommonModule, SharedModule, routing, MasterPageModule, HelpPanelComponent, CardModule, ProgressSpinnerModule, IconsComponent],
   providers: [RouteApiService],
 })
 export class LoanModule {}

@@ -6,7 +6,7 @@
           Personal Loan (<a [routerLink]="['loan', loan().id]">{{ loan().id | safeLoanId }}</a
           >)
         </h2>
-        <span class="pending">Pending</span>
+        <span class="pending">{{ loan().status | loanStatus }}</span>
       </header>
 
       <p>We need verify some information in order to finalize your loan application.</p>
@@ -19,7 +19,7 @@
           >)
         </h2>
         <a href="#">
-          <fa-icon [icon]="faChevronRight"></fa-icon>
+          <app-icons icon="chevronRight" />
         </a>
       </header>
 

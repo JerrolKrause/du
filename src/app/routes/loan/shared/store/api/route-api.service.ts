@@ -16,14 +16,17 @@ export class RouteApiService {
 
   getLoanDetails(loanId: number) {
     this.loanDetailsLoadingState$.next(Models.LoadingState.Loading);
+    this.loanDetails$.next(null);
+    this.loanDetailsErrorMessage$.next('');
+
     setTimeout(() => {
-      console.log('LOANS', LOANS);
-      console.log('loanId', loanId);
-      if (LOANS.find(loan => loan.id === loanId)) {
+      const loan = LOANS.find(loan => loan.id === loanId);
+      if (loan) {
         this.loanDetailsLoadingState$.next(Models.LoadingState.Success);
         this.loanDetails$.next({
-          id: loanId,
-          type: Models.LoanType.Secured,
+          id: loan.id,
+          type: loan.type,
+          status: loan.status,
           verifications: [
             { type: Models.VerificationTypes.Identity, status: Models.VerificationStatus.ActionRequired },
             { type: Models.VerificationTypes.Income, status: Models.VerificationStatus.ActionRequired },

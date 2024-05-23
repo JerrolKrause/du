@@ -1,28 +1,30 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 // Pipes, Angular
-import { DatePipe, CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 // Pipes, Custom
 import {
   CountPipe,
   DebouncePipe,
-  PhoneNumberPipe,
   DurationPipe,
   FilterPipe,
   HtmlRemovePipe,
+  LimitPipe,
+  PhoneNumberPipe,
   SafeHtmlPipe,
   SlugPipe,
   SortPipe,
   StringPipe,
   TextCasePipe,
-  LimitPipe,
 } from './pipes';
 // Directives
-import { FullScreenDirective, FocusDirective } from './directives';
 import { RouterModule } from '@angular/router';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { FocusDirective, FullScreenDirective } from './directives';
+import { LoanStatusPipe } from './pipes/loan-status.pipe';
+import { SafeLoanIdPipe } from './pipes/safe-loan-id.pipe';
 
 // Pipes + Directives
 export const APP_PIPES_DIRECTIVES = [
@@ -39,6 +41,8 @@ export const APP_PIPES_DIRECTIVES = [
   StringPipe,
   TextCasePipe,
   LimitPipe,
+  SafeLoanIdPipe,
+  LoanStatusPipe,
 
   // Directives
   FullScreenDirective,
