@@ -18,8 +18,27 @@ h1 {
 h2 {
   font-size: 24px;
   line-height: 32px;
-  margin-bottom: 20px;
   font-weight: 300;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+nav {
+  margin-left: calc(-1 * var(--body-padding));
+  margin-right: calc(-1 * var(--body-padding));
+  margin-bottom: 20px;
+}
+
+app-verification-task {
+  border-top: 1px solid var(--Primary-OMF-Sky-Light);
+  &:last-of-type {
+    border-bottom: 1px solid var(--Primary-OMF-Sky-Light);
+  }
 }
 
 p-card {

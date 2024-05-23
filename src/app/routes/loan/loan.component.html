@@ -12,6 +12,24 @@
       }
       @case (LoadingState.Success) {
         <h2>You have {{ tasksToComplete$ | async }} tasks to complete</h2>
+
+        @if (hasNewVerifications$ | async) {
+          <h3>New</h3>
+          <nav>
+            @for (verificationTask of newVerifications$ | async; track verificationTask.type) {
+              <app-verification-task [verificationTask]="verificationTask"></app-verification-task>
+            }
+          </nav>
+        }
+
+        @if (hasCompletedVerifications$ | async) {
+          <h3>Completed</h3>
+          <nav>
+            @for (verificationTask of completedVerifications$ | async; track verificationTask.type) {
+              <app-verification-task [verificationTask]="verificationTask"></app-verification-task>
+            }
+          </nav>
+        }
       }
       @case (LoadingState.Error) {
         <p-card>

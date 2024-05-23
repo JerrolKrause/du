@@ -86,7 +86,7 @@ export module Models {
 
   export enum VerificationStatus {
     New,
-    Submitted,
+    Pending,
     ActionRequired,
     Verified,
   }
