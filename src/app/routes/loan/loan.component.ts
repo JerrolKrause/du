@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BehaviorSubject, map } from 'rxjs';
-import LOGGED_IN_USER from '../../../assets/mock-data/logged-in-user';
-import { Models } from '../../shared/models';
+import { ApiService, Models } from '$shared';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription, map } from 'rxjs';
+import { RouteApiService } from './shared/store/api/route-api.service';
 
 @Component({
   selector: 'app-loan',
@@ -9,6 +10,26 @@ import { Models } from '../../shared/models';
   styleUrls: ['./loan.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoanComponent {
-  userName$ = new BehaviorSubject<Models.LoggedInUser>(LOGGED_IN_USER).asObservable().pipe(map(user => user.name));
+export class LoanComponent implements OnInit, OnDestroy {
+  private subscriptions = new Subscription();
+  protected readonly LoadingState = Models.LoadingState;
+
+  protected userName$ = this.globalAPIStore.loggedInUser$.pipe(map(user => user.name));
+  protected tasksToComplete$ = this.routeApi.loanDetails$.pipe(
+    map(loan => loan?.verifications.filter(verification => verification.status === Models.VerificationStatus.ActionRequired).length || 0),
+  );
+
+  constructor(
+    private route: ActivatedRoute,
+    private globalAPIStore: ApiService,
+    protected routeApi: RouteApiService,
+  ) {}
+
+  ngOnInit() {
+    this.subscriptions.add(this.route.params.pipe(map(params => parseInt(params['loanId'], 10))).subscribe(loanId => this.routeApi.getLoanDetails(loanId)));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
 }

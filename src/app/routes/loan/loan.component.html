@@ -1,7 +1,24 @@
 <app-masterpage>
   <section>
     <h1>Hello, {{ userName$ | async }}</h1>
-    <h2>You have 3 tasks to complete</h2>
+
+    @switch (routeApi.loanDetailsLoadingState$ | async) {
+      @case (LoadingState.Loading) {
+        <p-card>
+          <p-progressSpinner></p-progressSpinner>
+          <p>Loading</p>
+        </p-card>
+      }
+      @case (LoadingState.Success) {
+        <h2>You have {{ tasksToComplete$ | async }} tasks to complete</h2>
+      }
+      @case (LoadingState.Error) {
+        <p-card>
+          <h2>There was an error loading your loan details.</h2>
+          <p>Details: {{ routeApi.loanDetailsErrorMessage$ | async }}</p>
+        </p-card>
+      }
+    }
 
     <app-help-panel></app-help-panel>
   </section>

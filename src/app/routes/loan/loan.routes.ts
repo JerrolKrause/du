@@ -6,7 +6,7 @@ import { LoanModule } from './loan.module';
 
 const routes: Routes = [
   {
-    path: ':loandId',
+    path: ':loanId',
     component: LoanComponent,
     title: titleAppendSlug('Loan'),
   },
