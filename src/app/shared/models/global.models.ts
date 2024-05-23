@@ -90,6 +90,8 @@ export module Models {
     ActionRequired,
     Verified,
   }
+
+  export const ACTIONABLE_VERIFICATIONS = [VerificationStatus.New, VerificationStatus.ActionRequired];
 }
 
 /**

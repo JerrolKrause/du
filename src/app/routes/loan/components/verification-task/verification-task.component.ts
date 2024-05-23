@@ -1,5 +1,5 @@
 import { Models } from '$shared';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
 @Component({
   selector: 'app-verification-task',
@@ -9,4 +9,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 })
 export class VerificationTaskComponent {
   public verificationTask = input.required<Models.Verification>();
+  protected isActionable = computed(() => Models.ACTIONABLE_VERIFICATIONS.includes(this.verificationTask().status));
 }

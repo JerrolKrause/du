@@ -12,21 +12,20 @@ import { RouteApiService } from './shared/store/api/route-api.service';
 })
 export class LoanComponent implements OnInit, OnDestroy {
   private subscriptions = new Subscription();
-  private readonly NEW_VERIFICATIONS = [Models.VerificationStatus.New, Models.VerificationStatus.ActionRequired];
   protected readonly LoadingState = Models.LoadingState;
 
   protected userName$ = this.globalAPIStore.loggedInUser$.pipe(map(user => user.name));
   protected tasksToComplete$ = this.routeApi.loanDetails$.pipe(
-    map(loan => loan?.verifications.filter(verification => this.NEW_VERIFICATIONS.includes(verification.status)).length || 0),
+    map(loan => loan?.verifications.filter(verification => Models.ACTIONABLE_VERIFICATIONS.includes(verification.status)).length || 0),
   );
 
   protected newVerifications$ = this.routeApi.loanDetails$.pipe(
-    map(loan => loan?.verifications.filter(verification => this.NEW_VERIFICATIONS.includes(verification.status)) || []),
+    map(loan => loan?.verifications.filter(verification => Models.ACTIONABLE_VERIFICATIONS.includes(verification.status)) || []),
   );
   protected hasNewVerifications$ = this.newVerifications$.pipe(map(verifications => verifications.length > 0));
 
   protected completedVerifications$ = this.routeApi.loanDetails$.pipe(
-    map(loan => loan?.verifications.filter(verification => !this.NEW_VERIFICATIONS.includes(verification.status)) || []),
+    map(loan => loan?.verifications.filter(verification => !Models.ACTIONABLE_VERIFICATIONS.includes(verification.status)) || []),
   );
   protected hasCompletedVerifications$ = this.completedVerifications$.pipe(map(verifications => verifications.length > 0));
 
