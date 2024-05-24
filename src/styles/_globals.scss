@@ -15,7 +15,9 @@
   --Primary-OMF-White: #ffffff;
   --Primary-OMF-Sun: #ffc400;
 
+  --font-family: 'Merchant';
   --body-padding: 20px;
+
   @include convert($breakpoints);
   @include convert($colors);
 
@@ -26,6 +28,7 @@
 body {
   height: 100%;
   overflow: auto;
+  font-family: var(--font-family);
 }
 
 a {
