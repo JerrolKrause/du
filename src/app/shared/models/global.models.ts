@@ -95,7 +95,6 @@ export module Models {
 
   export enum IncomeVerificationMethod {
     Plaid,
-    Authenticate, // TODO: Made this up, delete this method
     IRS, // TODO: Made this up, delete this method
   }
 }

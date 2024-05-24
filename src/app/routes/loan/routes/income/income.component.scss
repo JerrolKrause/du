@@ -28,4 +28,19 @@ p {
   font-size: 18px;
   line-height: 25px;
   font-weight: 400;
+
+  &.manual {
+    text-align: center;
+  }
+}
+
+.verification-method {
+  display: block;
+  text-align: center;
+  margin-bottom: 30px;
+
+  ::ng-deep .p-card {
+    box-shadow: none;
+    border: 1px solid var(--Primary-OMF-Sky-Light, #e0ebf5);
+  }
 }

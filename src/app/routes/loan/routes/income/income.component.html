@@ -13,8 +13,15 @@
       }
       @case (LoadingState.Success) {
         @for (method of routeApi.incomeVerificationMethods$ | async; track method) {
-          <p-card>
-            <h2>{{ method }}</h2>
+          <p-card class="verification-method">
+            @switch (method) {
+              @case (IncomeVerificationMethod.Plaid) {
+                <app-plaid-verify-action />
+              }
+              @case (IncomeVerificationMethod.IRS) {
+                <app-irs-verify-action />
+              }
+            }
           </p-card>
         }
       }
@@ -26,7 +33,7 @@
       }
     }
 
-    <a routerLink="manual">Manually verify income</a>
+    <p class="manual"><a routerLink="manual">Manually verify income</a></p>
   </section>
   <section>
     <app-help-panel></app-help-panel>

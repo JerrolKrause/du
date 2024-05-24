@@ -13,6 +13,7 @@ import { RouteApiService } from './shared/store/api/route-api.service';
 export class IncomeComponent implements OnInit, OnDestroy {
   private subscriptions = new Subscription();
   protected readonly LoadingState = Models.LoadingState;
+  protected readonly IncomeVerificationMethod = Models.IncomeVerificationMethod;
 
   constructor(
     private route: ActivatedRoute,
