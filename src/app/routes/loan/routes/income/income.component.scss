@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  background-color: #f3f7fc;
+  width: 100%;
+}
+
+section {
+  padding: var(--body-padding);
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 24px;
+  margin-bottom: 30px;
+}

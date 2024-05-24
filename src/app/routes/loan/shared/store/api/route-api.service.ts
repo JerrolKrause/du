@@ -37,6 +37,6 @@ export class RouteApiService {
         this.loanDetailsLoadingState$.next(Models.LoadingState.Error);
         this.loanDetailsErrorMessage$.next('Loan not found');
       }
-    }, 1000);
+    }, 500);
   }
 }

@@ -2,7 +2,7 @@
 <span>Verify {{ verificationTask().type | verificationType }}</span>
 
 @if (isActionable()) {
-  <a href="#">
+  <a [routerLink]="route()">
     <app-icons icon="chevronRight" />
   </a>
 }

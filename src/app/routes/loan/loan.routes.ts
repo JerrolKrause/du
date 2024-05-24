@@ -6,9 +6,15 @@ import { LoanModule } from './loan.module';
 
 const routes: Routes = [
   {
+    path: ':loanId/income',
+    // canActivate: [AuthGuard],
+    loadChildren: () => import('./routes/income/income.module').then(m => m.IncomeModule),
+  },
+  {
     path: ':loanId',
     component: LoanComponent,
     title: titleAppendSlug('Loan'),
+    // canActivate: [AuthGuard]
   },
   {
     path: '**',
