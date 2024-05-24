@@ -1,0 +1,44 @@
+<app-masterpage>
+  <app-loan-back-nav></app-loan-back-nav>
+  <section>
+    <h1>Hello, {{ userName$ | async }}</h1>
+
+    @switch (routeApi.loanDetailsLoadingState$ | async) {
+      @case (LoadingState.Loading) {
+        <p-card>
+          <p-progressSpinner></p-progressSpinner>
+          <p>Loading</p>
+        </p-card>
+      }
+      @case (LoadingState.Success) {
+        <h2>You have {{ tasksToComplete$ | async }} tasks to complete</h2>
+
+        @if (hasNewVerifications$ | async) {
+          <h3>New</h3>
+          <nav>
+            @for (verificationTask of newVerifications$ | async; track verificationTask.type) {
+              <app-verification-task [verificationTask]="verificationTask"></app-verification-task>
+            }
+          </nav>
+        }
+
+        @if (hasCompletedVerifications$ | async) {
+          <h3>Completed</h3>
+          <nav>
+            @for (verificationTask of completedVerifications$ | async; track verificationTask.type) {
+              <app-verification-task [verificationTask]="verificationTask"></app-verification-task>
+            }
+          </nav>
+        }
+      }
+      @case (LoadingState.Error) {
+        <p-card>
+          <h2>There was an error loading your loan details.</h2>
+          <p>Details: {{ routeApi.loanDetailsErrorMessage$ | async }}</p>
+        </p-card>
+      }
+    }
+
+    <app-help-panel></app-help-panel>
+  </section>
+</app-masterpage>

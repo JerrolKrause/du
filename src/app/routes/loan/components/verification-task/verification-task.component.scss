@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--Primary-OMF-White);
+  height: 70px;
+
+  padding-left: var(--body-padding);
+  padding-right: var(--body-padding);
+
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 400;
+}
+
+app-icons {
+  color: var(--Primary-OMF-Sky);
+  font-size: 20px;
+}

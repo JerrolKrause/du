@@ -17,6 +17,11 @@ export const ROUTES: Routes = [
     title: titleAppendSlug('Please Log In'),
   },
   {
+    path: 'loan',
+    loadChildren: () => import('./routes/loan/loan.module').then(m => m.LoanModule),
+    // canActivate: [AuthGuard],
+  },
+  {
     path: '',
     pathMatch: 'full',
     loadChildren: () => import('./routes/home/home.module').then(m => m.HomeModule),

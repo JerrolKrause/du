@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  background-color: #f3f7fc;
+  width: 100%;
+}
+
+section {
+  padding: var(--body-padding);
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 24px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+nav {
+  margin-left: calc(-1 * var(--body-padding));
+  margin-right: calc(-1 * var(--body-padding));
+  margin-bottom: 20px;
+}
+
+app-verification-task {
+  border-top: 1px solid var(--Primary-OMF-Sky-Light);
+  &:last-of-type {
+    border-bottom: 1px solid var(--Primary-OMF-Sky-Light);
+  }
+}
+
+p-card {
+  display: block;
+  text-align: center;
+  margin-bottom: var(--body-padding);
+}

@@ -1,0 +1,9 @@
+<div class="nav">
+  <a routerLink="/">
+    <app-icons icon="chevronLeft" />
+  </a>
+</div>
+
+<div *ngIf="routeApi.loanDetails$ | async as loanDetails" class="center">
+  Loan {{ loanDetails.id | safeLoanId }} | <span class="status">{{ loanDetails.status | loanStatus }}</span>
+</div>

@@ -5,6 +5,8 @@ import {
   IconDefinition,
   faBars,
   faCaretDown,
+  faChevronLeft,
+  faChevronRight,
   faCog,
   faCogs,
   faCubes,
@@ -41,7 +43,9 @@ export type AvailableIcons =
   | 'home'
   | 'cubes'
   | 'question'
-  | 'x';
+  | 'x'
+  | 'chevronLeft'
+  | 'chevronRight';
 
 @Component({
   selector: 'app-icons',
@@ -74,6 +78,8 @@ export class IconsComponent implements OnInit {
     home: faHome,
     cubes: faCubes,
     x: faX,
+    chevronLeft: faChevronLeft,
+    chevronRight: faChevronRight,
   };
   constructor() {}
 

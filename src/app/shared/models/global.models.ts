@@ -34,6 +34,13 @@ export module Models {
     orange,
   }
 
+  export enum LoadingState {
+    Unloaded,
+    Loading,
+    Success,
+    Error,
+  }
+
   export interface LoggedInUser {
     name: string;
   }
@@ -59,29 +66,32 @@ export module Models {
     Unsecured = 'UNSECURED',
   }
 
-  interface LoanDetails {
+  export interface LoanDetails {
     id: number;
     type: LoanType;
+    status: LoanStatus;
     verifications: Verification[];
   }
 
-  interface Verification {
+  export interface Verification {
     type: VerificationTypes;
     status: VerificationStatus;
   }
 
-  enum VerificationTypes {
+  export enum VerificationTypes {
     Identity,
     Income,
     Vehicle,
   }
 
-  enum VerificationStatus {
+  export enum VerificationStatus {
     New,
-    Submitted,
+    Pending,
     ActionRequired,
     Verified,
   }
+
+  export const ACTIONABLE_VERIFICATIONS = [VerificationStatus.New, VerificationStatus.ActionRequired];
 }
 
 /**
