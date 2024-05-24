@@ -92,6 +92,12 @@ export module Models {
   }
 
   export const ACTIONABLE_VERIFICATIONS = [VerificationStatus.New, VerificationStatus.ActionRequired];
+
+  export enum IncomeVerificationMethod {
+    Plaid,
+    Authenticate, // TODO: Made this up, delete this method
+    IRS, // TODO: Made this up, delete this method
+  }
 }
 
 /**
