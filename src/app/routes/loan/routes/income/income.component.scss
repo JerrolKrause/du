@@ -5,6 +5,16 @@
 
 section {
   padding: var(--body-padding);
+
+  &.forground {
+    background-color: var(--Primary-OMF-White);
+  }
+}
+
+nav {
+  font-size: 15px;
+  line-height: 24px;
+  margin-bottom: 20px;
 }
 
 h1 {
@@ -12,4 +22,10 @@ h1 {
   font-weight: 300;
   line-height: 24px;
   margin-bottom: 30px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 400;
 }
