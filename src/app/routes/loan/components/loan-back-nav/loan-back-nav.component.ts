@@ -1,7 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-
-import { RouteApiService } from '../../shared/store/api/route-api.service';
+import { Models } from '$shared';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-loan-back-nav',
@@ -10,7 +8,5 @@ import { RouteApiService } from '../../shared/store/api/route-api.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoanBackNavComponent {
-  protected readonly faChevronLeft = faChevronLeft;
-
-  constructor(protected routeApi: RouteApiService) {}
+  public loanDetails = input.required<Models.LoanDetails | null>();
 }

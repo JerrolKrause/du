@@ -1,5 +1,5 @@
 <app-masterpage>
-  <app-loan-back-nav></app-loan-back-nav>
+  <app-loan-back-nav [loanDetails]="routeApi.loanDetails$ | async"></app-loan-back-nav>
   <section>
     <h1>Hello, {{ userName$ | async }}</h1>
 
