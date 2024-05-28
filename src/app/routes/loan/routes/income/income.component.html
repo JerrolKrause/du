@@ -6,7 +6,7 @@
 
     @switch (routeApi.incomeVerificationMethodsLoadingState$ | async) {
       @case (LoadingState.Loading) {
-        <app-loading-spinner></app-loading-spinner>
+        <app-loading-spinner />
       }
       @case (LoadingState.Success) {
         @for (method of routeApi.incomeVerificationMethods$ | async; track method) {
@@ -33,6 +33,6 @@
     <p class="manual"><a routerLink="manual">Manually verify income</a></p>
   </section>
   <section>
-    <app-help-panel></app-help-panel>
+    <app-help-panel />
   </section>
 </app-masterpage>

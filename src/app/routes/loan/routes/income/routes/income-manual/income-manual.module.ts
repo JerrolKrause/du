@@ -6,6 +6,7 @@ import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { HelpPanelComponent, MasterPageModule } from '../../../../../../components';
+import { FileUploadModule } from '../../../../../../components/file-upload/file-upload.module';
 import { LoadingSpinnerComponent } from '../../../../../../components/loading-spinner/loading-spinner.component';
 import { SecureMessageComponent } from '../../../../../../components/secure-message/secure-message.component';
 import { IrsVerifyActionComponent } from '../../components/irs-verify-action/irs-verify-action.component';
@@ -31,6 +32,7 @@ import { RouteApiService } from './shared/store/api/route-api.service';
     IrsVerifyActionComponent,
     SecureMessageComponent,
     LoadingSpinnerComponent,
+    FileUploadModule,
   ],
   providers: [RouteApiService],
 })

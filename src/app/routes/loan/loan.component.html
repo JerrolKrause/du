@@ -1,5 +1,5 @@
 <app-masterpage>
-  <app-loan-back-nav [loanDetails]="routeApi.loanDetails$ | async"></app-loan-back-nav>
+  <app-loan-back-nav [loanDetails]="routeApi.loanDetails$ | async" />
   <section>
     <h1>Hello, {{ userName$ | async }}</h1>
 
@@ -17,7 +17,7 @@
           <h3>New</h3>
           <nav>
             @for (verificationTask of newVerifications$ | async; track verificationTask.type) {
-              <app-verification-task [verificationTask]="verificationTask"></app-verification-task>
+              <app-verification-task [verificationTask]="verificationTask" />
             }
           </nav>
         }
@@ -26,7 +26,7 @@
           <h3>Completed</h3>
           <nav>
             @for (verificationTask of completedVerifications$ | async; track verificationTask.type) {
-              <app-verification-task [verificationTask]="verificationTask"></app-verification-task>
+              <app-verification-task [verificationTask]="verificationTask" />
             }
           </nav>
         }
@@ -39,6 +39,6 @@
       }
     }
 
-    <app-help-panel></app-help-panel>
+    <app-help-panel />
   </section>
 </app-masterpage>

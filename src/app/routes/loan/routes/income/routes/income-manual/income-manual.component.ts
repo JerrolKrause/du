@@ -1,5 +1,5 @@
 import { Models } from '$shared';
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, filter, map } from 'rxjs';
@@ -21,6 +21,8 @@ export class IncomeManualComponent implements OnInit, OnDestroy {
     dropdown: new FormControl<Models.ManualIncomeVerificationMethod | undefined>(undefined, Validators.required),
   });
 
+  protected fileUploader = signal(false);
+
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -28,10 +30,13 @@ export class IncomeManualComponent implements OnInit, OnDestroy {
     protected manualIncomeRouteApi: ManualIncomeRouteApiService,
   ) {}
 
+  protected fileUploadBack = () => {
+    this.fileUploader.set(false);
+  };
+
   onSubmit() {
     if (this.form.valid) {
-      console.log('Form submitted with value:', this.form.value.dropdown);
-      // Here you can handle form submission logic
+      this.fileUploader.set(true);
     }
   }
 
@@ -47,7 +52,7 @@ export class IncomeManualComponent implements OnInit, OnDestroy {
       this.manualIncomeRouteApi.manualIncomeVerificationMethods$
         .pipe(
           filter(options => !!options && !!options.length),
-          map(options => (options as Models.ManualIncomeVerificationMethod[])[1]),
+          map(options => (options as Models.ManualIncomeVerificationMethod[])[0]),
         )
         .subscribe(option => this.form.controls['dropdown'].setValue(option)),
     );

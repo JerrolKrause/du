@@ -1,0 +1,11 @@
+@if (showBackButton()) {
+  <nav><a (click)="back()">‹ Go Back</a></nav>
+}
+<h1>{{ label() }}</h1>
+<p><ng-content /></p>
+
+<app-photo-guidelines label="Photo Guidelines" />
+
+<p-fileUpload mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" name="demo[]" accept="image/*" maxFileSize="1000000" />
+
+<app-secure-message />
