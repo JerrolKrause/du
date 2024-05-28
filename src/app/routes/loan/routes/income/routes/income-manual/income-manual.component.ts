@@ -1,9 +1,10 @@
 import { Models } from '$shared';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription, map } from 'rxjs';
-import { RouteApiService } from '../../shared/store/api/route-api.service';
+import { Subscription, filter, map } from 'rxjs';
+import { RouteApiService as IncomeRouteApiService } from '../../shared/store/api/route-api.service';
+import { RouteApiService as ManualIncomeRouteApiService } from './shared/store/api/route-api.service';
 
 @Component({
   selector: 'app-income-manual',
@@ -16,20 +17,15 @@ export class IncomeManualComponent implements OnInit, OnDestroy {
   protected readonly LoadingState = Models.LoadingState;
   protected readonly IncomeVerificationMethod = Models.IncomeVerificationMethod;
 
-  protected options = [
-    { label: 'Option 1', value: 1 },
-    { label: 'Option 2', value: 2 },
-    { label: 'Option 3', value: 3 },
-  ];
-
   protected form = this.fb.group({
-    dropdown: [this.options[0].value, Validators.required],
+    dropdown: new FormControl<Models.ManualIncomeVerificationMethod | undefined>(undefined, Validators.required),
   });
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    protected routeApi: RouteApiService,
+    protected incomeRouteApi: IncomeRouteApiService,
+    protected manualIncomeRouteApi: ManualIncomeRouteApiService,
   ) {}
 
   onSubmit() {
@@ -41,7 +37,19 @@ export class IncomeManualComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscriptions.add(
-      this.route.params.pipe(map(params => parseInt(params['loanId'], 10))).subscribe(loanId => this.routeApi.listIncomeVerificationMethods(loanId)),
+      this.route.params.pipe(map(params => parseInt(params['loanId'], 10))).subscribe(loanId => {
+        this.incomeRouteApi.listIncomeVerificationMethods(loanId);
+        this.manualIncomeRouteApi.listManualIncomeVerificationMethods(loanId);
+      }),
+    );
+
+    this.subscriptions.add(
+      this.manualIncomeRouteApi.manualIncomeVerificationMethods$
+        .pipe(
+          filter(options => !!options && !!options.length),
+          map(options => (options as Models.ManualIncomeVerificationMethod[])[1]),
+        )
+        .subscribe(option => this.form.controls['dropdown'].setValue(option)),
     );
   }
 

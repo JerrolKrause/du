@@ -97,6 +97,12 @@ export module Models {
     Plaid,
     IRS, // TODO: Made this up, delete this method
   }
+
+  export interface ManualIncomeVerificationMethod {
+    id: number;
+    stub: string;
+    label: string;
+  }
 }
 
 /**

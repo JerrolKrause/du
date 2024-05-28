@@ -10,6 +10,7 @@ import { IrsVerifyActionComponent } from '../../components/irs-verify-action/irs
 import { PlaidVerifyActionComponent } from '../../components/plaid-verify-action/plaid-verify-action.component';
 import { IncomeManualComponent } from './income-manual.component';
 import { routing } from './income-manual.routes';
+import { RouteApiService } from './shared/store/api/route-api.service';
 
 @NgModule({
   declarations: [IncomeManualComponent],
@@ -27,5 +28,6 @@ import { routing } from './income-manual.routes';
     PlaidVerifyActionComponent,
     IrsVerifyActionComponent,
   ],
+  providers: [RouteApiService],
 })
 export class IncomeManualModule {}
