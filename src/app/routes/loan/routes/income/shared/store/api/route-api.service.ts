@@ -22,11 +22,11 @@ export class RouteApiService {
     setTimeout(() => {
       const loan = LOANS.find(loan => loan.id === loanId);
       if (loan) {
-        this.incomeVerificationMethodsLoadingState$.next(Models.LoadingState.Success);
         this.incomeVerificationMethods$.next([Models.IncomeVerificationMethod.Plaid, Models.IncomeVerificationMethod.IRS]);
+        this.incomeVerificationMethodsLoadingState$.next(Models.LoadingState.Success);
       } else {
-        this.incomeVerificationMethodsLoadingState$.next(Models.LoadingState.Error);
         this.incomeVerificationMethodsErrorMessage$.next('Loan not found');
+        this.incomeVerificationMethodsLoadingState$.next(Models.LoadingState.Error);
       }
     }, 500);
   }

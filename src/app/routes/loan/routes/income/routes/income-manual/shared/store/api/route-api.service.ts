@@ -22,16 +22,16 @@ export class RouteApiService {
     setTimeout(() => {
       const loan = LOANS.find(loan => loan.id === loanId);
       if (loan) {
-        this.manualIncomeVerificationMethodsLoadingState$.next(Models.LoadingState.Success);
         this.manualIncomeVerificationMethods$.next([
           { id: 0, stub: 'paystub', label: 'Paystub' },
           { id: 1, stub: 'bank-statement', label: 'Bank Statement' },
           { id: 2, stub: 'tax-return', label: 'Tax Return' },
           { id: 3, stub: 'w2', label: 'W2' },
         ]);
+        this.manualIncomeVerificationMethodsLoadingState$.next(Models.LoadingState.Success);
       } else {
-        this.manualIncomeVerificationMethodsLoadingState$.next(Models.LoadingState.Error);
         this.manualIncomeVerificationMethodsErrorMessage$.next('Loan not found');
+        this.manualIncomeVerificationMethodsLoadingState$.next(Models.LoadingState.Error);
       }
     }, 750);
   }
