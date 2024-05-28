@@ -1,6 +1,23 @@
 :host {
   display: block;
   width: 100%;
+
+  ::ng-deep {
+    .p-dropdown {
+      width: 100%;
+      max-width: 320px;
+      margin-bottom: 30px;
+    }
+
+    .p-button {
+      font-size: 20px;
+      line-height: 20px;
+      padding: 9px 19px;
+      width: 100%;
+      max-width: 320px;
+      margin-bottom: 30px;
+    }
+  }
 }
 
 section {

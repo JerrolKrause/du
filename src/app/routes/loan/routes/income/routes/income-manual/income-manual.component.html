@@ -4,7 +4,10 @@
     <h1>Verify Income</h1>
     <p>Please select the document you want to provide to verify your income.</p>
 
-    [INPUT]
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <p-dropdown formControlName="dropdown" [options]="options"></p-dropdown>
+      <p-button type="submit" [rounded]="true" label="Continue"></p-button>
+    </form>
 
     <p class="secure">We use 256-Bit SSL encryption for transmission of your information.</p>
     <p class="privacy">Your privacy is important to us. See our <a href="#">privacy policy</a>.</p>
