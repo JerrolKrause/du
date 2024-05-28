@@ -10,7 +10,35 @@
     <p class="privacy">Your privacy is important to us. See our <a href="#">privacy policy</a>.</p>
   </section>
   <section>
-    <!-- TODO: Verification Upsells Here -->
+    @switch (routeApi.incomeVerificationMethodsLoadingState$ | async) {
+      @case (LoadingState.Loading) {
+        <p-card>
+          <p-progressSpinner></p-progressSpinner>
+          <p>Loading</p>
+        </p-card>
+      }
+      @case (LoadingState.Success) {
+        @for (method of routeApi.incomeVerificationMethods$ | async; track method) {
+          <p-card class="verification-method">
+            @switch (method) {
+              @case (IncomeVerificationMethod.Plaid) {
+                <app-plaid-verify-action [upsell]="true" />
+              }
+              @case (IncomeVerificationMethod.IRS) {
+                <app-irs-verify-action [upsell]="true" />
+              }
+            }
+          </p-card>
+        }
+      }
+      @case (LoadingState.Error) {
+        <p-card>
+          <h2>There was an error loading your income verification options.</h2>
+          <p>Details: {{ routeApi.incomeVerificationMethodsErrorMessage$ | async }}</p>
+        </p-card>
+      }
+    }
+
     <app-help-panel></app-help-panel>
   </section>
 </app-masterpage>

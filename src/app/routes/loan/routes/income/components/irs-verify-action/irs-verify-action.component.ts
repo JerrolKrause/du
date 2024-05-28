@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   templateUrl: './irs-verify-action.component.html',
   styleUrls: ['./irs-verify-action.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class IrsVerifyActionComponent {
   public upsell = input(false);

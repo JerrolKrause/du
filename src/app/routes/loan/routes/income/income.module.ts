@@ -10,8 +10,17 @@ import { routing } from './income.routes';
 import { RouteApiService } from './shared/store/api/route-api.service';
 
 @NgModule({
-  declarations: [IncomeComponent, PlaidVerifyActionComponent, IrsVerifyActionComponent],
-  imports: [CommonModule, routing, MasterPageModule, HelpPanelComponent, CardModule, ProgressSpinnerModule],
+  declarations: [IncomeComponent],
+  imports: [
+    CommonModule,
+    routing,
+    MasterPageModule,
+    HelpPanelComponent,
+    CardModule,
+    ProgressSpinnerModule,
+    PlaidVerifyActionComponent,
+    IrsVerifyActionComponent,
+  ],
   providers: [RouteApiService],
 })
 export class IncomeModule {}

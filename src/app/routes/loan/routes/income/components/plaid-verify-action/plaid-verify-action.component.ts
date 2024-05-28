@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   templateUrl: './plaid-verify-action.component.html',
   styleUrls: ['./plaid-verify-action.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class PlaidVerifyActionComponent {
   public upsell = input(false);
