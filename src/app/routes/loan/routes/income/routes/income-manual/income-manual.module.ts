@@ -6,6 +6,8 @@ import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { HelpPanelComponent, MasterPageModule } from '../../../../../../components';
+import { LoadingSpinnerComponent } from '../../../../../../components/loading-spinner/loading-spinner.component';
+import { SecureMessageComponent } from '../../../../../../components/secure-message/secure-message.component';
 import { IrsVerifyActionComponent } from '../../components/irs-verify-action/irs-verify-action.component';
 import { PlaidVerifyActionComponent } from '../../components/plaid-verify-action/plaid-verify-action.component';
 import { IncomeManualComponent } from './income-manual.component';
@@ -27,6 +29,8 @@ import { RouteApiService } from './shared/store/api/route-api.service';
     ProgressSpinnerModule,
     PlaidVerifyActionComponent,
     IrsVerifyActionComponent,
+    SecureMessageComponent,
+    LoadingSpinnerComponent,
   ],
   providers: [RouteApiService],
 })

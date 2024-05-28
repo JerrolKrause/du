@@ -13,16 +13,12 @@
       <p-button type="submit" [rounded]="true" [disabled]="form.invalid" label="Continue"></p-button>
     </form>
 
-    <p class="secure">We use 256-Bit SSL encryption for transmission of your information.</p>
-    <p class="privacy">Your privacy is important to us. See our <a href="#">privacy policy</a>.</p>
+    <app-secure-message></app-secure-message>
   </section>
   <section>
     @switch (incomeRouteApi.incomeVerificationMethodsLoadingState$ | async) {
       @case (LoadingState.Loading) {
-        <p-card>
-          <p-progressSpinner></p-progressSpinner>
-          <p>Loading</p>
-        </p-card>
+        <app-loading-spinner></app-loading-spinner>
       }
       @case (LoadingState.Success) {
         @for (method of incomeRouteApi.incomeVerificationMethods$ | async; track method) {
