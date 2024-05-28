@@ -17,6 +17,7 @@
 
   --font-family: 'Merchant';
   --body-padding: 20px;
+  --body-background-color: #f3f7fc;
 
   @include convert($breakpoints);
   @include convert($colors);

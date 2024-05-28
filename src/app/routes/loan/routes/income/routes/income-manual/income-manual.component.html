@@ -10,7 +10,7 @@
         [loading]="(manualIncomeRouteApi.manualIncomeVerificationMethodsLoadingState$ | async) === LoadingState.Loading"
         [options]="(manualIncomeRouteApi.manualIncomeVerificationMethods$ | async)!"
       ></p-dropdown>
-      <p-button type="submit" [rounded]="true" label="Continue"></p-button>
+      <p-button type="submit" [rounded]="true" [disabled]="form.invalid" label="Continue"></p-button>
     </form>
 
     <p class="secure">We use 256-Bit SSL encryption for transmission of your information.</p>
