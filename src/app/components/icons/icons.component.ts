@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
 import {
   IconDefinition,
   faBars,
@@ -45,7 +46,8 @@ export type AvailableIcons =
   | 'question'
   | 'x'
   | 'chevronLeft'
-  | 'chevronRight';
+  | 'chevronRight'
+  | 'checkCircleOutline';
 
 @Component({
   selector: 'app-icons',
@@ -80,6 +82,7 @@ export class IconsComponent implements OnInit {
     x: faX,
     chevronLeft: faChevronLeft,
     chevronRight: faChevronRight,
+    checkCircleOutline: faCheckCircle,
   };
   constructor() {}
 
