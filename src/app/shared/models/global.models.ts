@@ -92,6 +92,17 @@ export module Models {
   }
 
   export const ACTIONABLE_VERIFICATIONS = [VerificationStatus.New, VerificationStatus.ActionRequired];
+
+  export enum IncomeVerificationMethod {
+    Plaid,
+    IRS, // TODO: Made this up, delete this method
+  }
+
+  export interface ManualIncomeVerificationMethod {
+    id: number;
+    stub: string;
+    label: string;
+  }
 }
 
 /**

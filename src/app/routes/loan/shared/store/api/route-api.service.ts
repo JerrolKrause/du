@@ -22,7 +22,6 @@ export class RouteApiService {
     setTimeout(() => {
       const loan = LOANS.find(loan => loan.id === loanId);
       if (loan) {
-        this.loanDetailsLoadingState$.next(Models.LoadingState.Success);
         this.loanDetails$.next({
           id: loan.id,
           type: loan.type,
@@ -33,10 +32,11 @@ export class RouteApiService {
             { type: Models.VerificationTypes.Vehicle, status: Models.VerificationStatus.Verified },
           ],
         });
+        this.loanDetailsLoadingState$.next(Models.LoadingState.Success);
       } else {
-        this.loanDetailsLoadingState$.next(Models.LoadingState.Error);
         this.loanDetailsErrorMessage$.next('Loan not found');
+        this.loanDetailsLoadingState$.next(Models.LoadingState.Error);
       }
-    }, 1000);
+    }, 500);
   }
 }

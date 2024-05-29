@@ -4,6 +4,6 @@
   </a>
 </div>
 
-<div *ngIf="routeApi.loanDetails$ | async as loanDetails" class="center">
+<div *ngIf="loanDetails() as loanDetails" class="center">
   Loan {{ loanDetails.id | safeLoanId }} | <span class="status">{{ loanDetails.status | loanStatus }}</span>
 </div>

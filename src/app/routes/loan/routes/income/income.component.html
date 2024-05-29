@@ -1,0 +1,38 @@
+<app-masterpage>
+  <section class="forground">
+    <nav><a routerLink="../">‹ Go Back</a></nav>
+    <h1>Verify Income</h1>
+    <p>Please select how you would like to verify your income.</p>
+
+    @switch (routeApi.incomeVerificationMethodsLoadingState$ | async) {
+      @case (LoadingState.Loading) {
+        <app-loading-spinner />
+      }
+      @case (LoadingState.Success) {
+        @for (method of routeApi.incomeVerificationMethods$ | async; track method) {
+          <p-card class="verification-method">
+            @switch (method) {
+              @case (IncomeVerificationMethod.Plaid) {
+                <app-plaid-verify-action />
+              }
+              @case (IncomeVerificationMethod.IRS) {
+                <app-irs-verify-action />
+              }
+            }
+          </p-card>
+        }
+      }
+      @case (LoadingState.Error) {
+        <p-card>
+          <h2>There was an error loading your income verification options.</h2>
+          <p>Details: {{ routeApi.incomeVerificationMethodsErrorMessage$ | async }}</p>
+        </p-card>
+      }
+    }
+
+    <p class="manual"><a routerLink="manual">Manually verify income</a></p>
+  </section>
+  <section>
+    <app-help-panel />
+  </section>
+</app-masterpage>

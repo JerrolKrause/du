@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DomService } from '@ntersol/services';
 import { AuthService } from './shared';
@@ -8,7 +8,7 @@ import { AuthService } from './shared';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent {
   constructor(
     private auth: AuthService,
     private dom: DomService,
@@ -21,8 +21,4 @@ export class AppComponent implements OnInit, OnDestroy {
       this.auth.refreshToken$.pipe(takeUntilDestroyed()).subscribe();
     }
   }
-
-  ngOnInit() {}
-
-  ngOnDestroy(): void {}
 }

@@ -1,0 +1,53 @@
+<app-masterpage>
+  <section class="forground">
+    @if (fileUploader()) {
+      <app-file-upload [label]="form.controls.dropdown.value?.label || 'Verify Income'" [backFunction]="fileUploadBack">
+        Take a photo or upload a file
+      </app-file-upload>
+    } @else {
+      <nav><a routerLink="../">‹ Go Back</a></nav>
+      <h1>Verify Income</h1>
+      <p>Please select the document you want to provide to verify your income.</p>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <p-dropdown
+          formControlName="dropdown"
+          [loading]="(manualIncomeRouteApi.manualIncomeVerificationMethodsLoadingState$ | async) === LoadingState.Loading"
+          [options]="(manualIncomeRouteApi.manualIncomeVerificationMethods$ | async)!"
+        ></p-dropdown>
+        <p-button type="submit" [rounded]="true" [disabled]="form.invalid" label="Continue"></p-button>
+      </form>
+
+      <app-secure-message />
+    }
+  </section>
+  <section>
+    @switch (incomeRouteApi.incomeVerificationMethodsLoadingState$ | async) {
+      @case (LoadingState.Loading) {
+        <app-loading-spinner />
+      }
+      @case (LoadingState.Success) {
+        @for (method of incomeRouteApi.incomeVerificationMethods$ | async; track method) {
+          <p-card class="verification-method">
+            @switch (method) {
+              @case (IncomeVerificationMethod.Plaid) {
+                <app-plaid-verify-action [upsell]="true" />
+              }
+              @case (IncomeVerificationMethod.IRS) {
+                <app-irs-verify-action [upsell]="true" />
+              }
+            }
+          </p-card>
+        }
+      }
+      @case (LoadingState.Error) {
+        <p-card>
+          <h2>There was an error loading your income verification options.</h2>
+          <p>Details: {{ incomeRouteApi.incomeVerificationMethodsErrorMessage$ | async }}</p>
+        </p-card>
+      }
+    }
+
+    <app-help-panel />
+  </section>
+</app-masterpage>

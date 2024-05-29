@@ -39,7 +39,7 @@ export class LoanComponent implements OnInit, OnDestroy {
     this.subscriptions.add(this.route.params.pipe(map(params => parseInt(params['loanId'], 10))).subscribe(loanId => this.routeApi.getLoanDetails(loanId)));
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.subscriptions.unsubscribe();
   }
 }

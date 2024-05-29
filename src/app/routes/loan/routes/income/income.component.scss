@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+section {
+  padding: var(--body-padding);
+
+  &.forground {
+    background-color: var(--Primary-OMF-White);
+  }
+}
+
+nav {
+  font-size: 15px;
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 24px;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 400;
+
+  &.manual {
+    text-align: center;
+  }
+}
+
+.verification-method {
+  display: block;
+  text-align: center;
+  margin-bottom: 30px;
+
+  ::ng-deep .p-card {
+    box-shadow: none;
+    border: 1px solid var(--Primary-OMF-Sky-Light, #e0ebf5);
+  }
+}

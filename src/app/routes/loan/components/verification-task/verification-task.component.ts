@@ -10,4 +10,17 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 export class VerificationTaskComponent {
   public verificationTask = input.required<Models.Verification>();
   protected isActionable = computed(() => Models.ACTIONABLE_VERIFICATIONS.includes(this.verificationTask().status));
+  protected route = computed(() => {
+    if (this.isActionable()) {
+      switch (this.verificationTask().type) {
+        case Models.VerificationTypes.Identity:
+          return 'identity';
+        case Models.VerificationTypes.Income:
+          return 'income';
+        case Models.VerificationTypes.Vehicle:
+          return 'vehicle';
+      }
+    }
+    return null;
+  });
 }

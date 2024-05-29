@@ -5,7 +5,7 @@ $primaryDarkerColor: #005b9f;
 $primaryTextColor: #ffffff;
 
 //Global
-$fontFamily: 'Open Sans', 'Helvetica Neue', sans-serif;
+$fontFamily: var(--font-family);
 $fontSize: 14px;
 $textColor: #333333;
 $textSecondaryColor: #848484;
