@@ -8,7 +8,7 @@ import { routing } from './home.routes';
 // Components
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-import { LoanThumbComponent } from './components/loan-thumb/loan-thumb.component';
+import { LoanThumbComponent } from './components';
 import { HomeComponent } from './home.component';
 
 @NgModule({

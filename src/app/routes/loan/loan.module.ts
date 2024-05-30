@@ -2,12 +2,10 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { LoanComponent } from '../loan/loan.component';
 // Routing
+import { HelpPanelComponent, IconsComponent, LoadingSpinnerComponent, MasterPageModule } from '$components';
 import { SharedModule } from '$shared';
 import { CardModule } from 'primeng/card';
-import { HelpPanelComponent, IconsComponent, MasterPageModule } from '../../components';
-import { LoadingSpinnerComponent } from '../../components/loading-spinner/loading-spinner.component';
-import { LoanBackNavComponent } from './components/loan-back-nav/loan-back-nav.component';
-import { VerificationTaskComponent } from './components/verification-task/verification-task.component';
+import { LoanBackNavComponent, VerificationTaskComponent } from './components';
 import { routing } from './loan.routes';
 import { VerificationTypePipe } from './pipes/verification-type.pipe';
 import { RouteApiService } from './shared/store/api/route-api.service';

@@ -1,16 +1,11 @@
+import { FileUploadModule, HelpPanelComponent, LoadingSpinnerComponent, MasterPageModule, SecureMessageComponent } from '$components';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
-import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { HelpPanelComponent, MasterPageModule } from '../../../../../../components';
-import { FileUploadModule } from '../../../../../../components/file-upload/file-upload.module';
-import { LoadingSpinnerComponent } from '../../../../../../components/loading-spinner/loading-spinner.component';
-import { SecureMessageComponent } from '../../../../../../components/secure-message/secure-message.component';
-import { IrsVerifyActionComponent } from '../../components/irs-verify-action/irs-verify-action.component';
-import { PlaidVerifyActionComponent } from '../../components/plaid-verify-action/plaid-verify-action.component';
+import { IrsVerifyActionComponent, PlaidVerifyActionComponent } from '../../components';
 import { IncomeManualComponent } from './income-manual.component';
 import { routing } from './income-manual.routes';
 import { RouteApiService } from './shared/store/api/route-api.service';
@@ -27,7 +22,6 @@ import { RouteApiService } from './shared/store/api/route-api.service';
     ButtonModule,
     CardModule,
     DropdownModule,
-    ProgressSpinnerModule,
     PlaidVerifyActionComponent,
     IrsVerifyActionComponent,
     SecureMessageComponent,
