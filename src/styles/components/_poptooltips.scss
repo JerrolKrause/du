@@ -8,8 +8,8 @@
   }
 }
 .tooltip {
-  background: #fff !important;
-  color: #000 !important;
+  color: var(--Primary-OMF-Sky);
+  text-decoration: underline;
 }
 
 @keyframes fadein {

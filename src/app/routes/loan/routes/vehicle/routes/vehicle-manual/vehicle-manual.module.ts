@@ -1,17 +1,16 @@
-import { FileUploadModule, HelpPanelComponent, LoadingSpinnerComponent, MasterPageModule, SecureMessageComponent } from '$components';
+import { FileUploadModule, HelpPanelComponent, IconsComponent, LoadingSpinnerComponent, MasterPageModule, SecureMessageComponent } from '$components';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
-import { IrsVerifyActionComponent, PlaidVerifyActionComponent } from '../../components';
-import { IncomeManualComponent } from './income-manual.component';
-import { routing } from './income-manual.routes';
 import { RouteApiService } from './shared/store/api/route-api.service';
+import { VehicleManualComponent } from './vehicle-manual.component';
+import { routing } from './vehicle-manual.routes';
 
 @NgModule({
-  declarations: [IncomeManualComponent],
+  declarations: [VehicleManualComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -22,12 +21,11 @@ import { RouteApiService } from './shared/store/api/route-api.service';
     ButtonModule,
     CardModule,
     DropdownModule,
-    PlaidVerifyActionComponent,
-    IrsVerifyActionComponent,
     SecureMessageComponent,
     LoadingSpinnerComponent,
     FileUploadModule,
+    IconsComponent,
   ],
   providers: [RouteApiService],
 })
-export class IncomeManualModule {}
+export class VehicleManualModule {}

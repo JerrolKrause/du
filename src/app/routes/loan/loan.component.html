@@ -5,10 +5,7 @@
 
     @switch (routeApi.loanDetailsLoadingState$ | async) {
       @case (LoadingState.Loading) {
-        <p-card>
-          <p-progressSpinner></p-progressSpinner>
-          <p>Loading</p>
-        </p-card>
+        <app-loading-spinner />
       }
       @case (LoadingState.Success) {
         <h2>You have {{ tasksToComplete$ | async }} tasks to complete</h2>

@@ -6,6 +6,11 @@ import { LoanModule } from './loan.module';
 
 const routes: Routes = [
   {
+    path: ':loanId/vehicle',
+    // canActivate: [AuthGuard],
+    loadChildren: () => import('./routes/vehicle/vehicle.module').then(m => m.VehicleModule),
+  },
+  {
     path: ':loanId/income',
     // canActivate: [AuthGuard],
     loadChildren: () => import('./routes/income/income.module').then(m => m.IncomeModule),

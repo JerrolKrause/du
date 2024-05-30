@@ -6,6 +6,6 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "files.trimTrailingWhitespace": true,
-  "typescript.preferences.importModuleSpecifier": "project-relative",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
   "workbench.settings.editor": "json"
 }

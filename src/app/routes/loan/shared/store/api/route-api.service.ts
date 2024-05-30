@@ -27,9 +27,9 @@ export class RouteApiService {
           type: loan.type,
           status: loan.status,
           verifications: [
-            { type: Models.VerificationTypes.Identity, status: Models.VerificationStatus.ActionRequired },
+            { type: Models.VerificationTypes.Identity, status: Models.VerificationStatus.Verified },
             { type: Models.VerificationTypes.Income, status: Models.VerificationStatus.ActionRequired },
-            { type: Models.VerificationTypes.Vehicle, status: Models.VerificationStatus.Verified },
+            { type: Models.VerificationTypes.Vehicle, status: Models.VerificationStatus.ActionRequired },
           ],
         });
         this.loanDetailsLoadingState$.next(Models.LoadingState.Success);

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { FileUploadModule as PrimeFileUploadModule } from 'primeng/fileupload';
 import { SecureMessageComponent } from '../secure-message/secure-message.component';
-import { PhotoGuidelinesComponent } from './components/photo-guidelines/photo-guidelines.component';
+import { PhotoGuidelinesComponent } from './components';
 import { FileUploadComponent } from './file-upload.component';
 
 @NgModule({
