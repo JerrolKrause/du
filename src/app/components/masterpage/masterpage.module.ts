@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '$shared';
 import { FeedbackModalComponent, LogoutModalComponent } from '../modals';
-import { FooterComponent, HeaderComponent, LayoutSingleComponent, MasterpageComponent, NavComponent } from './';
+import { FooterComponent, HeaderComponent, LayoutSingleComponent, MasterpageComponent } from './';
 
 import { ConfirmationService } from 'primeng/api';
 import { SidebarModule } from 'primeng/sidebar';
@@ -13,7 +13,7 @@ import { IconsComponent } from '../icons/icons.component';
 const APP_MODALS = [LogoutModalComponent, FeedbackModalComponent];
 
 // Components to include
-export const APP_COMPONENTS = [...APP_MODALS, FooterComponent, HeaderComponent, MasterpageComponent, LayoutSingleComponent, NavComponent];
+export const APP_COMPONENTS = [...APP_MODALS, FooterComponent, HeaderComponent, MasterpageComponent, LayoutSingleComponent];
 
 @NgModule({
   imports: [
