@@ -18,7 +18,7 @@ export class IncomeManualComponent implements OnInit, OnDestroy {
   protected readonly IncomeVerificationMethod = Models.IncomeVerificationMethod;
 
   protected form = this.fb.group({
-    dropdown: new FormControl<Models.ManualIncomeVerificationMethod | undefined>(undefined, Validators.required),
+    dropdown: new FormControl<Models.GenericVerificationMethod | undefined>(undefined, Validators.required),
   });
 
   protected fileUploader = signal(false);
@@ -52,7 +52,7 @@ export class IncomeManualComponent implements OnInit, OnDestroy {
       this.manualIncomeRouteApi.manualIncomeVerificationMethods$
         .pipe(
           filter(options => !!options && !!options.length),
-          map(options => (options as Models.ManualIncomeVerificationMethod[])[0]),
+          map(options => (options as Models.GenericVerificationMethod[])[0]),
         )
         .subscribe(option => this.form.controls['dropdown'].setValue(option)),
     );

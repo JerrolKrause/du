@@ -10,12 +10,16 @@
       <p>Please select the document you want to provide to verify your income.</p>
 
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <p-dropdown
-          formControlName="dropdown"
-          [loading]="(manualIncomeRouteApi.manualIncomeVerificationMethodsLoadingState$ | async) === LoadingState.Loading"
-          [options]="(manualIncomeRouteApi.manualIncomeVerificationMethods$ | async)!"
-        ></p-dropdown>
-        <p-button type="submit" [rounded]="true" [disabled]="form.invalid" label="Continue"></p-button>
+        <div>
+          <p-dropdown
+            formControlName="dropdown"
+            [loading]="(manualIncomeRouteApi.manualIncomeVerificationMethodsLoadingState$ | async) === LoadingState.Loading"
+            [options]="(manualIncomeRouteApi.manualIncomeVerificationMethods$ | async)!"
+          />
+        </div>
+        <div>
+          <p-button type="submit" [rounded]="true" [disabled]="form.invalid" label="Continue"></p-button>
+        </div>
       </form>
 
       <app-secure-message />

@@ -98,7 +98,7 @@ export module Models {
     IRS, // TODO: Made this up, delete this method
   }
 
-  export interface ManualIncomeVerificationMethod {
+  export interface GenericVerificationMethod {
     id: number;
     stub: string;
     label: string;

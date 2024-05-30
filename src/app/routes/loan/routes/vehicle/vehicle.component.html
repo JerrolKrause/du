@@ -1,0 +1,15 @@
+<app-masterpage>
+  <section class="forground">
+    <nav><a routerLink="../">‹ Go Back</a></nav>
+    <h1>Verify Vehicle Information</h1>
+    <p>We need a few documents to verify your vehicle information.</p>
+    <app-documents-checklist />
+
+    <p class="manual">
+      <p-button [rounded]="true" label="Continue" routerLink="manual" />
+    </p>
+  </section>
+  <section>
+    <app-help-panel />
+  </section>
+</app-masterpage>

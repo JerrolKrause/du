@@ -1,11 +1,9 @@
 <!-- TODO: Need to take into account the various states and the associated interface changes -->
 
 @if (isActionable()) {
-  <div class="actionable">
+  <div class="actionable" [routerLink]="route()">
     <span>Verify {{ verificationTask().type | verificationType }}</span>
-    <a [routerLink]="route()">
-      <app-icons icon="chevronRight" />
-    </a>
+    <app-icons icon="chevronRight" />
   </div>
 } @else {
   <div class="verified">
