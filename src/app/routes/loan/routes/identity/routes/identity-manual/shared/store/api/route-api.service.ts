@@ -23,10 +23,10 @@ export class RouteApiService {
       const loan = LOANS.find(loan => loan.id === loanId);
       if (loan) {
         this.manualIdentityVerificationMethods$.next([
-          { id: 0, stub: 'paystub', label: 'Paystub' },
-          { id: 1, stub: 'bank-statement', label: 'Bank Statement' },
-          { id: 2, stub: 'tax-return', label: 'Tax Return' },
-          { id: 3, stub: 'w2', label: 'W2' },
+          { id: 0, stub: 'state-dl', label: 'Drivers License' },
+          { id: 1, stub: 'state-id', label: 'Identification Card' },
+          { id: 2, stub: 'us-passport', label: 'US Passport' },
+          { id: 3, stub: 'prc', label: 'Permanent Resident Card' },
         ]);
         this.manualIdentityVerificationMethodsLoadingState$.next(Models.LoadingState.Success);
       } else {
