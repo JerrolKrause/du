@@ -1,0 +1,54 @@
+<app-masterpage>
+  <section class="forground">
+    @if (fileUploader()) {
+      <app-file-upload [label]="form.controls.dropdown.value?.label || 'Verify Identity'" [backFunction]="fileUploadBack">
+        Take a photo or upload a file
+      </app-file-upload>
+    } @else {
+      <nav><a routerLink="../">‹ Go Back</a></nav>
+      <h1>Verify Identity</h1>
+      <p>Please select the document you want to provide to verify your identity.</p>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div>
+          <p-dropdown
+            formControlName="dropdown"
+            [loading]="(manualIdentityRouteApi.manualIdentityVerificationMethodsLoadingState$ | async) === LoadingState.Loading"
+            [options]="(manualIdentityRouteApi.manualIdentityVerificationMethods$ | async)!"
+          />
+        </div>
+        <div>
+          <p-button type="submit" [rounded]="true" [disabled]="form.invalid" label="Continue"></p-button>
+        </div>
+      </form>
+
+      <app-secure-message />
+    }
+  </section>
+  <section>
+    @switch (identityRouteApi.identityVerificationMethodsLoadingState$ | async) {
+      @case (LoadingState.Loading) {
+        <app-loading-spinner />
+      }
+      @case (LoadingState.Success) {
+        @for (method of identityRouteApi.identityVerificationMethods$ | async; track method) {
+          <p-card class="verification-method">
+            @switch (method) {
+              @case (IdentityVerificationMethod.Veriff) {
+                <app-veriff-verify-action [upsell]="true" />
+              }
+            }
+          </p-card>
+        }
+      }
+      @case (LoadingState.Error) {
+        <p-card>
+          <h2>There was an error loading your identity verification options.</h2>
+          <p>Details: {{ identityRouteApi.identityVerificationMethodsErrorMessage$ | async }}</p>
+        </p-card>
+      }
+    }
+
+    <app-help-panel />
+  </section>
+</app-masterpage>

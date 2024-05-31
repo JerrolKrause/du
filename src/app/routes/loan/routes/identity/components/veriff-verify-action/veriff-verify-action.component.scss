@@ -1,0 +1,33 @@
+:host {
+  display: block;
+}
+
+.logo {
+  margin-bottom: 20px;
+
+  img {
+    max-height: 39px;
+    width: auto;
+  }
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 15px;
+}
+
+.cta {
+  font-size: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 8px;
+  }
+}

@@ -98,7 +98,11 @@ export module Models {
     IRS, // TODO: Made this up, delete this method
   }
 
-  export interface GenericVerificationMethod {
+  export enum IdentityVerificationMethod {
+    Veriff,
+  }
+
+  export interface GenericVerificationOption {
     id: number;
     stub: string;
     label: string;

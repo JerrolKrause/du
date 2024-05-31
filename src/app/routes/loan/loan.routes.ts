@@ -16,6 +16,11 @@ const routes: Routes = [
     loadChildren: () => import('./routes/income/income.module').then(m => m.IncomeModule),
   },
   {
+    path: ':loanId/identity',
+    // canActivate: [AuthGuard],
+    loadChildren: () => import('./routes/identity/identity.module').then(m => m.IdentityModule),
+  },
+  {
     path: ':loanId',
     component: LoanComponent,
     title: titleAppendSlug('Loan'),

@@ -17,7 +17,7 @@ export class VehicleManualComponent implements OnInit, OnDestroy {
   protected readonly LoadingState = Models.LoadingState;
   protected readonly IncomeVerificationMethod = Models.IncomeVerificationMethod;
 
-  protected verificationMethod: Models.GenericVerificationMethod | null = null;
+  protected verificationMethod: Models.GenericVerificationOption | null = null;
 
   protected fileUploader = signal(false);
 
@@ -33,7 +33,7 @@ export class VehicleManualComponent implements OnInit, OnDestroy {
     this.verificationMethod = null;
   };
 
-  navigateToVerification(method: Models.GenericVerificationMethod) {
+  navigateToVerification(method: Models.GenericVerificationOption) {
     this.verificationMethod = method;
     this.fileUploader.set(true);
   }

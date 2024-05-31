@@ -11,7 +11,7 @@ import LOANS from '../../../../../../../../../../assets/mock-data/loans';
 @Injectable()
 export class RouteApiService {
   manualVehicleVerificationMethodsLoadingState$ = new BehaviorSubject<Models.LoadingState>(Models.LoadingState.Unloaded);
-  manualVehicleVerificationMethods$ = new BehaviorSubject<Models.GenericVerificationMethod[] | undefined>(undefined);
+  manualVehicleVerificationMethods$ = new BehaviorSubject<Models.GenericVerificationOption[] | undefined>(undefined);
   manualVehicleVerificationMethodsErrorMessage$ = new BehaviorSubject<string>('');
 
   listManualVehicleVerificationMethods(loanId: number) {
