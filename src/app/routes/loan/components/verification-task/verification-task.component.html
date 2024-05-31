@@ -3,11 +3,11 @@
 @if (isActionable()) {
   <div class="actionable" [routerLink]="route()">
     <span>Verify {{ verificationTask().type | verificationType }}</span>
-    <app-icons icon="chevronRight" />
+    <app-icons icon="chevron-right" />
   </div>
 } @else {
   <div class="verified">
-    <app-icons icon="checkCircleOutline" />
+    <app-icons icon="check-circle-outline" />
     <span class="label">
       <span>Verify {{ verificationTask().type | verificationType }}</span>
       <span class="status">Verified</span>

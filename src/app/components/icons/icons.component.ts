@@ -45,9 +45,9 @@ export type AvailableIcons =
   | 'cubes'
   | 'question'
   | 'x'
-  | 'chevronLeft'
-  | 'chevronRight'
-  | 'checkCircleOutline';
+  | 'chevron-left'
+  | 'chevron-right'
+  | 'check-circle-outline';
 
 @Component({
   selector: 'app-icons',
@@ -80,9 +80,9 @@ export class IconsComponent implements OnInit {
     home: faHome,
     cubes: faCubes,
     x: faX,
-    chevronLeft: faChevronLeft,
-    chevronRight: faChevronRight,
-    checkCircleOutline: faCheckCircle,
+    'chevron-left': faChevronLeft,
+    'chevron-right': faChevronRight,
+    'check-circle-outline': faCheckCircle,
   };
   constructor() {}
 

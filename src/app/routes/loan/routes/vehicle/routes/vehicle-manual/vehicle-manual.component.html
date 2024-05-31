@@ -18,7 +18,7 @@
             @for (verificationTask of manualVehicleRouteApi.manualVehicleVerificationMethods$ | async; track verificationTask.id) {
               <p-card (click)="navigateToVerification(verificationTask)" class="verificationTask">
                 <span>{{ verificationTask.label }}</span>
-                <app-icons icon="chevronRight" />
+                <app-icons icon="chevron-right" />
               </p-card>
             }
           </nav>
