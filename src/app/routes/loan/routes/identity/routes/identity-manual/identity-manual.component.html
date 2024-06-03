@@ -3,23 +3,23 @@
     @if (fileUploader() && loanId) {
       <app-file-upload
         [loanId]="loanId"
-        [type]="VerificationTypes.Income"
-        [label]="form.controls.dropdown.value?.label || 'Verify Income'"
+        [type]="VerificationTypes.Identity"
+        [label]="form.controls.dropdown.value?.label || 'Verify Identity'"
         [backFunction]="fileUploadBack"
       >
         Take a photo or upload a file
       </app-file-upload>
     } @else {
       <nav><a routerLink="../">‹ Go Back</a></nav>
-      <h1>Verify Income</h1>
-      <p>Please select the document you want to provide to verify your income.</p>
+      <h1>Verify Identity</h1>
+      <p>Please select the document you want to provide to verify your identity.</p>
 
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div>
           <p-dropdown
             formControlName="dropdown"
-            [loading]="(manualIncomeRouteApi.manualIncomeVerificationMethodsLoadingState$ | async) === LoadingState.Loading"
-            [options]="(manualIncomeRouteApi.manualIncomeVerificationMethods$ | async)!"
+            [loading]="(manualIdentityRouteApi.manualIdentityVerificationMethodsLoadingState$ | async) === LoadingState.Loading"
+            [options]="(manualIdentityRouteApi.manualIdentityVerificationMethods$ | async)!"
           />
         </div>
         <div>
@@ -31,19 +31,16 @@
     }
   </section>
   <section>
-    @switch (incomeRouteApi.incomeVerificationMethodsLoadingState$ | async) {
+    @switch (identityRouteApi.identityVerificationMethodsLoadingState$ | async) {
       @case (LoadingState.Loading) {
         <app-loading-spinner />
       }
       @case (LoadingState.Success) {
-        @for (method of incomeRouteApi.incomeVerificationMethods$ | async; track method) {
+        @for (method of identityRouteApi.identityVerificationMethods$ | async; track method) {
           <p-card class="verification-method">
             @switch (method) {
-              @case (IncomeVerificationMethod.Plaid) {
-                <app-plaid-verify-action [upsell]="true" />
-              }
-              @case (IncomeVerificationMethod.IRS) {
-                <app-irs-verify-action [upsell]="true" />
+              @case (IdentityVerificationMethod.Veriff) {
+                <app-veriff-verify-action [upsell]="true" />
               }
             }
           </p-card>
@@ -51,8 +48,8 @@
       }
       @case (LoadingState.Error) {
         <p-card>
-          <h2>There was an error loading your income verification options.</h2>
-          <p>Details: {{ incomeRouteApi.incomeVerificationMethodsErrorMessage$ | async }}</p>
+          <h2>There was an error loading your identity verification options.</h2>
+          <p>Details: {{ identityRouteApi.identityVerificationMethodsErrorMessage$ | async }}</p>
         </p-card>
       }
     }

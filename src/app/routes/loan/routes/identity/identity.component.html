@@ -1,0 +1,35 @@
+<app-masterpage>
+  <section class="forground">
+    <nav><a routerLink="../">‹ Go Back</a></nav>
+    <h1>Verify Identity</h1>
+    <p>Please select how you would like to verify your identity.</p>
+
+    @switch (routeApi.identityVerificationMethodsLoadingState$ | async) {
+      @case (LoadingState.Loading) {
+        <app-loading-spinner />
+      }
+      @case (LoadingState.Success) {
+        @for (method of routeApi.identityVerificationMethods$ | async; track method) {
+          <p-card class="verification-method">
+            @switch (method) {
+              @case (IdentityVerificationMethod.Veriff) {
+                <app-veriff-verify-action />
+              }
+            }
+          </p-card>
+        }
+      }
+      @case (LoadingState.Error) {
+        <p-card>
+          <h2>There was an error loading your identity verification options.</h2>
+          <p>Details: {{ routeApi.identityVerificationMethodsErrorMessage$ | async }}</p>
+        </p-card>
+      }
+    }
+
+    <p class="manual"><a routerLink="manual">Manually verify identity</a></p>
+  </section>
+  <section>
+    <app-help-panel />
+  </section>
+</app-masterpage>

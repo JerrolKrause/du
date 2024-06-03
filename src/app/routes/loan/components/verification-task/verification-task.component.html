@@ -2,15 +2,40 @@
 
 @if (isActionable()) {
   <div class="actionable" [routerLink]="route()">
-    <span>Verify {{ verificationTask().type | verificationType }}</span>
-    <app-icons icon="chevronRight" />
+    @switch (verificationTask().status) {
+      @case (VerificationStatus.ActionRequired) {
+        <span class="with-status">
+          <app-icons icon="exclamation-circle" class="status-icon action-required" />
+          <span class="label">
+            <span>Verify {{ verificationTask().type | verificationType }}</span>
+            <span class="status-text action-required">Action Required</span>
+          </span>
+        </span>
+        <app-icons icon="chevron-right" class="action-icon" />
+      }
+      @case (VerificationStatus.New) {
+        <span class="label">Verify {{ verificationTask().type | verificationType }}</span>
+        <app-icons icon="chevron-right" class="action-icon" />
+      }
+    }
   </div>
 } @else {
-  <div class="verified">
-    <app-icons icon="checkCircleOutline" />
-    <span class="label">
-      <span>Verify {{ verificationTask().type | verificationType }}</span>
-      <span class="status">Verified</span>
-    </span>
+  <div class="with-status">
+    @switch (verificationTask().status) {
+      @case (VerificationStatus.Pending) {
+        <app-icons icon="check-circle-outline" class="status-icon" />
+        <span class="label">
+          <span>Verify {{ verificationTask().type | verificationType }}</span>
+          <span class="status-text">Submitted</span>
+        </span>
+      }
+      @case (VerificationStatus.Verified) {
+        <app-icons icon="check-circle-outline" class="status-icon verified" />
+        <span class="label">
+          <span>Verify {{ verificationTask().type | verificationType }}</span>
+          <span class="status-text verified">Verified</span>
+        </span>
+      }
+    }
   </div>
 }

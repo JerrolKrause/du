@@ -16,10 +16,12 @@ export class VehicleManualComponent implements OnInit, OnDestroy {
   private subscriptions = new Subscription();
   protected readonly LoadingState = Models.LoadingState;
   protected readonly IncomeVerificationMethod = Models.IncomeVerificationMethod;
+  protected readonly VerificationTypes = Models.VerificationTypes;
 
-  protected verificationMethod: Models.GenericVerificationMethod | null = null;
+  protected verificationMethod: Models.GenericVerificationOption | null = null;
 
   protected fileUploader = signal(false);
+  protected loanId: number | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -33,7 +35,7 @@ export class VehicleManualComponent implements OnInit, OnDestroy {
     this.verificationMethod = null;
   };
 
-  navigateToVerification(method: Models.GenericVerificationMethod) {
+  navigateToVerification(method: Models.GenericVerificationOption) {
     this.verificationMethod = method;
     this.fileUploader.set(true);
   }
@@ -41,6 +43,7 @@ export class VehicleManualComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptions.add(
       this.route.params.pipe(map(params => parseInt(params['loanId'], 10))).subscribe(loanId => {
+        this.loanId = loanId;
         this.vehicleRouteApi.listVehicleVerificationMethods(loanId);
         this.manualVehicleRouteApi.listManualVehicleVerificationMethods(loanId);
       }),
