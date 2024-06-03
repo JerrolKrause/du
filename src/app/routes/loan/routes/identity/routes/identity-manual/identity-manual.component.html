@@ -1,7 +1,12 @@
 <app-masterpage>
   <section class="forground">
-    @if (fileUploader()) {
-      <app-file-upload [label]="form.controls.dropdown.value?.label || 'Verify Identity'" [backFunction]="fileUploadBack">
+    @if (fileUploader() && loanId) {
+      <app-file-upload
+        [loanId]="loanId"
+        [type]="VerificationTypes.Identity"
+        [label]="form.controls.dropdown.value?.label || 'Verify Identity'"
+        [backFunction]="fileUploadBack"
+      >
         Take a photo or upload a file
       </app-file-upload>
     } @else {

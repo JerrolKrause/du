@@ -16,12 +16,14 @@ export class IncomeManualComponent implements OnInit, OnDestroy {
   private subscriptions = new Subscription();
   protected readonly LoadingState = Models.LoadingState;
   protected readonly IncomeVerificationMethod = Models.IncomeVerificationMethod;
+  protected readonly VerificationTypes = Models.VerificationTypes;
 
   protected form = this.fb.group({
     dropdown: new FormControl<Models.GenericVerificationOption | undefined>(undefined, Validators.required),
   });
 
   protected fileUploader = signal(false);
+  protected loanId: number | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -43,6 +45,7 @@ export class IncomeManualComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptions.add(
       this.route.params.pipe(map(params => parseInt(params['loanId'], 10))).subscribe(loanId => {
+        this.loanId = loanId;
         this.incomeRouteApi.listIncomeVerificationMethods(loanId);
         this.manualIncomeRouteApi.listManualIncomeVerificationMethods(loanId);
       }),

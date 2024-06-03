@@ -1,7 +1,12 @@
 <app-masterpage>
   <section class="forground">
-    @if (fileUploader()) {
-      <app-file-upload [label]="verificationMethod?.label || 'Verify Vehicle Information'" [backFunction]="fileUploadBack">
+    @if (fileUploader() && loanId) {
+      <app-file-upload
+        [loanId]="loanId"
+        [type]="VerificationTypes.Vehicle"
+        [label]="verificationMethod?.label || 'Verify Vehicle Information'"
+        [backFunction]="fileUploadBack"
+      >
         Take a photo or upload a file
       </app-file-upload>
     } @else {

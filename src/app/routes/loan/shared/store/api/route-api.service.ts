@@ -1,5 +1,6 @@
 import { Models } from '$shared';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import LOANS from '../../../../../../assets/mock-data/loans';
 // import { environment } from '$env'; // Base api url
@@ -10,9 +11,29 @@ import LOANS from '../../../../../../assets/mock-data/loans';
  */
 @Injectable()
 export class RouteApiService {
+  private loanDetailsCache: Record<number, Models.LoanDetails> = {};
+
   loanDetailsLoadingState$ = new BehaviorSubject<Models.LoadingState>(Models.LoadingState.Unloaded);
   loanDetails$ = new BehaviorSubject<Models.LoanDetails | null>(null);
   loanDetailsErrorMessage$ = new BehaviorSubject<string>('');
+
+  updatingVerificationState$ = new BehaviorSubject<Models.LoadingState>(Models.LoadingState.Unloaded);
+  updatingVerificationErrorMessage$ = new BehaviorSubject<string>('');
+
+  constructor(private router: Router) {
+    LOANS.forEach(loan => {
+      this.loanDetailsCache[loan.id] = {
+        id: loan.id,
+        type: loan.type,
+        status: loan.status,
+        verifications: [
+          { type: Models.VerificationTypes.Identity, status: Models.VerificationStatus.ActionRequired },
+          { type: Models.VerificationTypes.Income, status: Models.VerificationStatus.ActionRequired },
+          { type: Models.VerificationTypes.Vehicle, status: Models.VerificationStatus.ActionRequired },
+        ],
+      };
+    });
+  }
 
   getLoanDetails(loanId: number) {
     this.loanDetailsLoadingState$.next(Models.LoadingState.Loading);
@@ -20,23 +41,30 @@ export class RouteApiService {
     this.loanDetailsErrorMessage$.next('');
 
     setTimeout(() => {
-      const loan = LOANS.find(loan => loan.id === loanId);
-      if (loan) {
-        this.loanDetails$.next({
-          id: loan.id,
-          type: loan.type,
-          status: loan.status,
-          verifications: [
-            { type: Models.VerificationTypes.Identity, status: Models.VerificationStatus.Verified },
-            { type: Models.VerificationTypes.Income, status: Models.VerificationStatus.ActionRequired },
-            { type: Models.VerificationTypes.Vehicle, status: Models.VerificationStatus.ActionRequired },
-          ],
-        });
+      const loanDetails = this.loanDetailsCache[loanId];
+      if (loanDetails) {
+        this.loanDetails$.next(loanDetails);
         this.loanDetailsLoadingState$.next(Models.LoadingState.Success);
       } else {
         this.loanDetailsErrorMessage$.next('Loan not found');
         this.loanDetailsLoadingState$.next(Models.LoadingState.Error);
       }
     }, 500);
+  }
+
+  verify(loanId: number, type: Models.VerificationTypes, status: Models.VerificationStatus) {
+    this.updatingVerificationState$.next(Models.LoadingState.Loading);
+    const loanDetails = this.loanDetailsCache[loanId];
+
+    if (loanDetails) {
+      loanDetails.verifications = loanDetails.verifications.map(v => (v.type === type ? { ...v, status } : v));
+      if (this.loanDetails$.value?.id === loanId) {
+        this.loanDetails$.next(loanDetails);
+      }
+      this.updatingVerificationState$.next(Models.LoadingState.Success);
+      this.router.navigate(['/loan', loanId]);
+    } else {
+      this.updatingVerificationErrorMessage$.next('Loan not found');
+    }
   }
 }

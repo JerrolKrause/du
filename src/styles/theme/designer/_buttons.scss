@@ -209,13 +209,26 @@ body {
     }
   }
 
-  .p-splitbutton.p-buttonset {
-    .p-button {
-      border: 1px solid transparent;
+  .p-splitbutton {
+    button {
+      &:first-of-type {
+        @include border-radius-right(0);
+      }
+
+      &:last-of-type {
+        display: flex;
+        @include border-radius-left(0);
+      }
     }
 
-    .p-menu {
-      min-width: 100%;
+    .p-buttonset {
+      .p-button {
+        border: 1px solid transparent;
+      }
+
+      .p-menu {
+        min-width: 100%;
+      }
     }
   }
 
