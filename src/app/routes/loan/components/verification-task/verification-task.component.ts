@@ -8,6 +8,8 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VerificationTaskComponent {
+  protected readonly VerificationStatus = Models.VerificationStatus;
+
   public verificationTask = input.required<Models.Verification>();
   protected isActionable = computed(() => Models.ACTIONABLE_VERIFICATIONS.includes(this.verificationTask().status));
   protected route = computed(() => {

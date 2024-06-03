@@ -32,14 +32,14 @@ export class FileUploadComponent {
       label: 'New',
       command: () => this.setVerification(Models.VerificationStatus.New),
     },
-    // {
-    //   label: 'Pending',
-    //   command: () => this.setVerification(Models.VerificationStatus.Pending),
-    // },
-    // {
-    //   label: 'Action Required',
-    //   command: () => this.setVerification(Models.VerificationStatus.ActionRequired),
-    // },
+    {
+      label: 'Submitted',
+      command: () => this.setVerification(Models.VerificationStatus.Pending),
+    },
+    {
+      label: 'Action Required',
+      command: () => this.setVerification(Models.VerificationStatus.ActionRequired),
+    },
     {
       label: 'Verified',
       command: () => this.setVerification(Models.VerificationStatus.Verified),
