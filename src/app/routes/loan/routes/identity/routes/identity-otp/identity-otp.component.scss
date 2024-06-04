@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  width: 100%;
+  // min-height: 100%;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: var(--body-padding);
+
+  &.forground {
+    background-color: var(--Primary-OMF-White);
+  }
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 24px;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 400;
+}

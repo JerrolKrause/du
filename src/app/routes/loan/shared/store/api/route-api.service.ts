@@ -11,6 +11,7 @@ import LOANS from '../../../../../../assets/mock-data/loans';
  */
 @Injectable()
 export class RouteApiService {
+  private otpIdentityVerified = false;
   private loanDetailsCache: Record<number, Models.LoanDetails> = {};
 
   loanDetailsLoadingState$ = new BehaviorSubject<Models.LoadingState>(Models.LoadingState.Unloaded);
@@ -19,6 +20,10 @@ export class RouteApiService {
 
   updatingVerificationState$ = new BehaviorSubject<Models.LoadingState>(Models.LoadingState.Unloaded);
   updatingVerificationErrorMessage$ = new BehaviorSubject<string>('');
+
+  phoneNumberLoadingState$ = new BehaviorSubject<Models.LoadingState>(Models.LoadingState.Unloaded);
+  phoneNumber$ = new BehaviorSubject<number | undefined>(undefined);
+  phoneNumberErrorMessage$ = new BehaviorSubject<string>('');
 
   constructor(private router: Router) {
     LOANS.forEach(loan => {
@@ -66,5 +71,16 @@ export class RouteApiService {
     } else {
       this.updatingVerificationErrorMessage$.next('Loan not found');
     }
+  }
+
+  getPhoneNumber() {
+    this.phoneNumberLoadingState$.next(Models.LoadingState.Loading);
+    this.phoneNumber$.next(undefined);
+    this.phoneNumberErrorMessage$.next('');
+
+    setTimeout(() => {
+      this.phoneNumber$.next(1234567890);
+      this.phoneNumberLoadingState$.next(Models.LoadingState.Success);
+    }, 750);
   }
 }

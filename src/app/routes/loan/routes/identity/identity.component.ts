@@ -22,6 +22,7 @@ export class IdentityComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    // TODO: Check here OTP screen is needed
     this.subscriptions.add(
       this.route.params.pipe(map(params => parseInt(params['loanId'], 10))).subscribe(loanId => this.routeApi.listIdentityVerificationMethods(loanId)),
     );
