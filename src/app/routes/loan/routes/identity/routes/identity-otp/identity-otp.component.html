@@ -3,17 +3,18 @@
     <h1>Verify your identity</h1>
     <p>To make sure it’s really you, we’ll send a passcode text message to your mobile phone:</p>
 
-    @switch (routeApi.phoneNumberLoadingState$ | async) {
+    @switch (loanApiService.phoneNumberLoadingState$ | async) {
       @case (LoadingState.Loading) {
         <app-loading-spinner />
       }
       @case (LoadingState.Success) {
-        {{ routeApi.phoneNumber$ | async }}
+        {{ loanApiService.phoneNumber$ | async }}
+        <p-button label="Validate" (onClick)="verifyOtp()" />
       }
       @case (LoadingState.Error) {
         <p-card>
           <h2>There was an error loading your identity verification options.</h2>
-          <p>Details: {{ routeApi.phoneNumberErrorMessage$ | async }}</p>
+          <p>Details: {{ loanApiService.phoneNumberErrorMessage$ | async }}</p>
         </p-card>
       }
     }

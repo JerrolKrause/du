@@ -1,7 +1,7 @@
 import { Models } from '$shared';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, map } from 'rxjs';
 import LOANS from '../../../../../../assets/mock-data/loans';
 // import { environment } from '$env'; // Base api url
 
@@ -11,7 +11,7 @@ import LOANS from '../../../../../../assets/mock-data/loans';
  */
 @Injectable()
 export class RouteApiService {
-  private otpIdentityVerified = false;
+  private otpVerified$ = new BehaviorSubject<boolean | undefined>(undefined);
   private loanDetailsCache: Record<number, Models.LoanDetails> = {};
 
   loanDetailsLoadingState$ = new BehaviorSubject<Models.LoadingState>(Models.LoadingState.Unloaded);
@@ -24,6 +24,11 @@ export class RouteApiService {
   phoneNumberLoadingState$ = new BehaviorSubject<Models.LoadingState>(Models.LoadingState.Unloaded);
   phoneNumber$ = new BehaviorSubject<number | undefined>(undefined);
   phoneNumberErrorMessage$ = new BehaviorSubject<string>('');
+
+  requiresOtp$ = this.otpVerified$.asObservable().pipe(
+    map(otpVerified => (undefined === otpVerified ? undefined : !otpVerified)),
+    distinctUntilChanged(),
+  );
 
   constructor(private router: Router) {
     LOANS.forEach(loan => {
@@ -73,6 +78,13 @@ export class RouteApiService {
     }
   }
 
+  checkOtpRequired() {
+    // Make a real server call to decide if OTP is required.
+    if (this.otpVerified$.value === undefined) {
+      this.otpVerified$.next(false);
+    }
+  }
+
   getPhoneNumber() {
     this.phoneNumberLoadingState$.next(Models.LoadingState.Loading);
     this.phoneNumber$.next(undefined);
@@ -82,5 +94,9 @@ export class RouteApiService {
       this.phoneNumber$.next(1234567890);
       this.phoneNumberLoadingState$.next(Models.LoadingState.Success);
     }, 750);
+  }
+
+  verifyOtp() {
+    this.otpVerified$.next(true);
   }
 }

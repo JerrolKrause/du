@@ -1,5 +1,6 @@
 import { Models } from '$shared';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RouteApiService } from 'src/app/routes/loan/shared/store/api/route-api.service';
 
 @Component({
@@ -11,9 +12,19 @@ import { RouteApiService } from 'src/app/routes/loan/shared/store/api/route-api.
 export class IdentityOtpComponent implements OnInit {
   protected readonly LoadingState = Models.LoadingState;
 
-  constructor(protected routeApi: RouteApiService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    protected loanApiService: RouteApiService,
+  ) {}
 
   ngOnInit() {
-    this.routeApi.getPhoneNumber();
+    this.loanApiService.getPhoneNumber();
+  }
+
+  // TODO: Remove this
+  verifyOtp() {
+    this.loanApiService.verifyOtp();
+    this.router.navigate(['..'], { relativeTo: this.route });
   }
 }
