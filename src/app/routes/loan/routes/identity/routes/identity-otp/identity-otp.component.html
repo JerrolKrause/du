@@ -1,0 +1,13 @@
+<app-masterpage>
+  <section class="forground">
+    @switch (routeUiService.otpMethod$ | async) {
+      @case (OtpMethod.SMS) {
+        <app-otp-phone-number />
+      }
+
+      @case (OtpMethod.Questions) {
+        <app-otp-questions />
+      }
+    }
+  </section>
+</app-masterpage>

@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+span {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  margin-right: 16px;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 24px;
+}
+
+app-icons {
+  margin-right: 4px;
+}

@@ -1,0 +1,13 @@
+@if (routeUiService.editingPhoneNumber$ | async) {
+  <span>{{ loanApiService.phoneNumber$ | async | phoneNumber }}</span>
+  <a (click)="cancelEditPhoneNumber()">
+    <app-icons icon="x" />
+    Cancel
+  </a>
+} @else {
+  <span>{{ loanApiService.phoneNumber$ | async | phoneNumber }}</span>
+  <a (click)="editPhoneNumber()">
+    <app-icons icon="pencil" />
+    Edit
+  </a>
+}

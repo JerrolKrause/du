@@ -11,6 +11,11 @@ const routes: Routes = [
     loadChildren: () => import('./routes/identity-manual/identity-manual.module').then(m => m.IdentityManualModule),
   },
   {
+    path: 'otp',
+    // canActivate: [AuthGuard],
+    loadChildren: () => import('./routes/identity-otp/identity-otp.module').then(m => m.IdentityOtpModule),
+  },
+  {
     path: '',
     component: IdentityComponent,
     // canActivate: [AuthGuard],

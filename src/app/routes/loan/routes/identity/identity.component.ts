@@ -2,6 +2,7 @@ import { Models } from '$shared';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, concatMap, filter, map } from 'rxjs';
+import { RouteApiService as LoanApiService } from '../../shared/store/api/route-api.service';
 import { RouteApiService } from './shared/store/api/route-api.service';
 
 @Component({
@@ -18,12 +19,22 @@ export class IdentityComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private loanApiService: LoanApiService,
     protected routeApi: RouteApiService,
   ) {}
 
   ngOnInit() {
     this.subscriptions.add(
-      this.route.params.pipe(map(params => parseInt(params['loanId'], 10))).subscribe(loanId => this.routeApi.listIdentityVerificationMethods(loanId)),
+      this.loanApiService.requiresOtp$.pipe(filter(requiresOtp => !!requiresOtp)).subscribe(() => this.router.navigate(['otp'], { relativeTo: this.route })),
+    );
+
+    this.subscriptions.add(
+      this.loanApiService.requiresOtp$
+        .pipe(
+          filter(requiresOtp => /* specifically check false, since undefined means not loaded here */ false === requiresOtp),
+          concatMap(() => this.route.params.pipe(map(params => parseInt(params['loanId'], 10)))),
+        )
+        .subscribe(loanId => this.routeApi.listIdentityVerificationMethods(loanId)),
     );
 
     this.subscriptions.add(
@@ -36,6 +47,8 @@ export class IdentityComponent implements OnInit, OnDestroy {
         )
         .subscribe(() => this.router.navigate(['manual'], { relativeTo: this.route })),
     );
+
+    this.loanApiService.checkOtpRequired();
   }
 
   ngOnDestroy() {

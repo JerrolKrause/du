@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: var(--body-padding);
+  text-align: center;
+
+  &.forground {
+    background-color: var(--Primary-OMF-White);
+  }
+}

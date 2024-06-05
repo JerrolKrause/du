@@ -107,6 +107,11 @@ export module Models {
     stub: string;
     label: string;
   }
+
+  export enum OtpMethod {
+    SMS,
+    Questions,
+  }
 }
 
 /**

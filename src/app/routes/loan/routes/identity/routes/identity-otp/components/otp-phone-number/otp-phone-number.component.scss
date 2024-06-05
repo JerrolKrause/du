@@ -1,0 +1,56 @@
+:host {
+  display: block;
+
+  ::ng-deep {
+    .p-button {
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 24px;
+      padding: 12px 16px;
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+}
+
+img {
+  width: 143px;
+  height: auto;
+  margin: 0 auto 16px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  margin-bottom: 16px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  margin-bottom: 44px;
+}
+
+app-otp-editable-phone {
+  margin-bottom: 12px;
+}
+
+.subtext {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 300;
+  margin-bottom: 32px;
+}
+
+.cta {
+  margin-bottom: 28px;
+}
+
+a {
+  text-decoration: underline;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 24px;
+}

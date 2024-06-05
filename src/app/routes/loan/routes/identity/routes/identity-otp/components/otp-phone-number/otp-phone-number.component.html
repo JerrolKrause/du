@@ -1,0 +1,41 @@
+@switch (loanApiService.phoneNumberLoadingState$ | async) {
+  @case (LoadingState.Loading) {
+    <app-loading-spinner />
+  }
+  @case (LoadingState.Success) {
+    @switch (loanApiService.sendOtpState$ | async) {
+      @case (LoadingState.Unloaded) {
+        <img src="assets/images/identity-verification.svg" alt="Verify your identity" />
+        <h1>Verify your identity</h1>
+        <p>To make sure it’s really you, we’ll send a passcode text message to your mobile phone:</p>
+
+        <app-otp-editable-phone />
+        <div class="subtext">Messaging and data rates may apply.</div>
+
+        <div class="cta">
+          <p-button label="Send Passcode" (onClick)="sendPasscode()" [rounded]="true" [disabled]="routeUiService.editingPhoneNumber$ | async" />
+        </div>
+        <div><a (click)="routeUiService.updateOtpMethod(OtpMethod.Questions)">I don't have a mobile number</a></div>
+      }
+
+      @case (LoadingState.Loading) {
+        <app-loading-spinner message="Sending passcode" />
+      }
+      @case (LoadingState.Success) {
+        <app-otp-passcode />
+      }
+      @case (LoadingState.Error) {
+        <p-card>
+          <h2>There was an error loading your identity verification options.</h2>
+          <p>Details: {{ loanApiService.phoneNumberErrorMessage$ | async }}</p>
+        </p-card>
+      }
+    }
+  }
+  @case (LoadingState.Error) {
+    <p-card>
+      <h2>There was an error loading your identity verification options.</h2>
+      <p>Details: {{ loanApiService.phoneNumberErrorMessage$ | async }}</p>
+    </p-card>
+  }
+}
