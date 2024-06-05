@@ -28,7 +28,20 @@ p {
 }
 
 app-otp-editable-phone {
-  margin-bottom: 12px;
+  margin-bottom: 32px;
+}
+
+.otpInput {
+  text-align: left;
+  width: 220px;
+  margin: 0 auto 32px auto;
+
+  label {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
 }
 
 .cta {

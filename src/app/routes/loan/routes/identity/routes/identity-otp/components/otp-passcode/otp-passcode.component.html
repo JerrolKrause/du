@@ -8,7 +8,10 @@
 
     <app-otp-editable-phone />
 
-    <div>[FORM HERE]</div>
+    <div class="otpInput">
+      <label for="otp">Enter six digit code</label>
+      <p-inputOtp id="otp" [length]="6" [integerOnly]="true" />
+    </div>
 
     <div class="cta"><p-button label="Submit Passcode" (onClick)="verifyOtp()" [rounded]="true" [disabled]="routeUiService.editingPhoneNumber$ | async" /></div>
     <div><a (click)="resendPasscode()">Resend My Code</a></div>

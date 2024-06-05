@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { InputOtpModule } from 'primeng/inputotp';
 import { OtpEditablePhoneComponent } from 'src/app/routes/loan/routes/identity/routes/identity-otp/components/otp-editable-phone/otp-editable-phone.component';
 import { OtpPasscodeComponent } from './components/otp-passcode/otp-passcode.component';
 import { OtpPhoneNumberComponent } from './components/otp-phone-number/otp-phone-number.component';
@@ -14,7 +15,7 @@ import { RouteUiService } from './shared/store/ui/route-ui.service';
 
 @NgModule({
   declarations: [IdentityOtpComponent, OtpPhoneNumberComponent, OtpPasscodeComponent, OtpQuestionsComponent, OtpEditablePhoneComponent],
-  imports: [CommonModule, routing, SharedModule, MasterPageModule, ButtonModule, CardModule, LoadingSpinnerComponent, IconsComponent],
+  imports: [CommonModule, routing, SharedModule, MasterPageModule, ButtonModule, CardModule, InputOtpModule, LoadingSpinnerComponent, IconsComponent],
   providers: [RouteUiService],
 })
 export class IdentityOtpModule {}
