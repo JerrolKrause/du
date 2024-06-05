@@ -1,7 +1,6 @@
 :host {
   display: block;
   width: 100%;
-  // min-height: 100%;
 }
 
 section {
@@ -9,21 +8,28 @@ section {
   flex-direction: column;
   flex-grow: 1;
   padding: var(--body-padding);
+  text-align: center;
 
   &.forground {
     background-color: var(--Primary-OMF-White);
   }
 }
 
+img {
+  width: 143px;
+  height: auto;
+  margin: 0 auto 16px;
+}
+
 h1 {
-  font-size: 32px;
-  font-weight: 300;
-  line-height: 24px;
-  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  margin-bottom: 16px;
 }
 
 p {
-  font-size: 18px;
-  line-height: 25px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 400;
 }

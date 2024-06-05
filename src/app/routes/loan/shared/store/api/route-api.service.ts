@@ -96,6 +96,16 @@ export class RouteApiService {
     }, 750);
   }
 
+  updatePhoneNumber(phoneNumber: number) {
+    this.phoneNumberLoadingState$.next(Models.LoadingState.Loading);
+    this.phoneNumberErrorMessage$.next('');
+
+    setTimeout(() => {
+      this.phoneNumber$.next(phoneNumber);
+      this.phoneNumberLoadingState$.next(Models.LoadingState.Success);
+    }, 750);
+  }
+
   verifyOtp() {
     this.otpVerified$.next(true);
   }
