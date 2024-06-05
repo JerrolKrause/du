@@ -3,22 +3,34 @@
     <app-loading-spinner />
   }
   @case (LoadingState.Success) {
-    <form [formGroup]="form">
-      <h1>Verify your identity</h1>
-      <p>Enter the six-digit passcode sent to:</p>
+    @switch (loanApiService.resendOtpState$ | async) {
+      @case (LoadingState.Loading) {
+        <app-loading-spinner message="Resending passcode" />
+      }
+      @default {
+        <form [formGroup]="form">
+          <h1>Verify your identity</h1>
+          <p>Enter the six-digit passcode sent to:</p>
 
-      <app-otp-editable-phone />
+          <app-otp-editable-phone />
 
-      <div class="otpInput">
-        <label for="otp">Enter six digit code</label>
-        <p-inputOtp formControlName="passcode" [length]="6" [integerOnly]="true" />
-      </div>
+          <div class="otpInput">
+            <label for="otp">Enter six digit code</label>
+            <p-inputOtp formControlName="passcode" [length]="6" [integerOnly]="true" />
+          </div>
 
-      <div class="cta">
-        <p-button label="Submit Passcode" (onClick)="verifyOtp()" [rounded]="true" [disabled]="form.invalid || (routeUiService.editingPhoneNumber$ | async)" />
-      </div>
-      <div><a (click)="resendPasscode()">Resend My Code</a></div>
-    </form>
+          <div class="cta">
+            <p-button
+              label="Submit Passcode"
+              (onClick)="verifyOtp()"
+              [rounded]="true"
+              [disabled]="form.invalid || (routeUiService.editingPhoneNumber$ | async)"
+            />
+          </div>
+          <div><a (click)="resendPasscode()">Resend My Code</a></div>
+        </form>
+      }
+    }
   }
   @case (LoadingState.Error) {
     <p-card>
@@ -27,3 +39,4 @@
     </p-card>
   }
 }
+<p-toast />

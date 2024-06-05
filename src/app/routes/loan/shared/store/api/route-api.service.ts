@@ -28,6 +28,9 @@ export class RouteApiService {
   sendOtpState$ = new BehaviorSubject<Models.LoadingState>(Models.LoadingState.Unloaded);
   sendOtpErrorMessage$ = new BehaviorSubject<string>('');
 
+  resendOtpState$ = new BehaviorSubject<Models.LoadingState>(Models.LoadingState.Unloaded);
+  resendOtpErrorMessage$ = new BehaviorSubject<string>('');
+
   requiresOtp$ = this.otpVerified$.asObservable().pipe(
     map(otpVerified => (undefined === otpVerified ? undefined : !otpVerified)),
     distinctUntilChanged(),
@@ -119,7 +122,12 @@ export class RouteApiService {
   }
 
   resendOtp() {
-    this.sendOtp();
+    this.resendOtpState$.next(Models.LoadingState.Loading);
+    this.resendOtpErrorMessage$.next('');
+
+    setTimeout(() => {
+      this.resendOtpState$.next(Models.LoadingState.Success);
+    }, 750);
   }
 
   verifyOtp() {
