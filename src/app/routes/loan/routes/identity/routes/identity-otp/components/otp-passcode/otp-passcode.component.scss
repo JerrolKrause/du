@@ -27,14 +27,8 @@ p {
   margin-bottom: 44px;
 }
 
-.phone {
+app-otp-editable-phone {
   margin-bottom: 12px;
-
-  span {
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: 500;
-  }
 }
 
 .cta {
@@ -46,15 +40,4 @@ a {
   font-size: 20px;
   font-weight: 300;
   line-height: 24px;
-
-  &.edit {
-    display: inline-block;
-    margin-left: 16px;
-    text-decoration: none;
-    font-size: 20px;
-
-    app-icons {
-      margin-right: 4px;
-    }
-  }
 }

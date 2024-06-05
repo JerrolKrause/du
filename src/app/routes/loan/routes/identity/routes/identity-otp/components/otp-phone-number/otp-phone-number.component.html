@@ -9,16 +9,12 @@
         <h1>Verify your identity</h1>
         <p>To make sure it’s really you, we’ll send a passcode text message to your mobile phone:</p>
 
-        <div class="phone">
-          <span>{{ loanApiService.phoneNumber$ | async | phoneNumber }}</span>
-          <a class="edit">
-            <app-icons icon="pencil" />
-            Edit
-          </a>
-        </div>
+        <app-otp-editable-phone />
         <div class="subtext">Messaging and data rates may apply.</div>
 
-        <div class="cta"><p-button label="Send Passcode" (onClick)="sendPasscode()" [rounded]="true" /></div>
+        <div class="cta">
+          <p-button label="Send Passcode" (onClick)="sendPasscode()" [rounded]="true" [disabled]="routeUiService.editingPhoneNumber$ | async" />
+        </div>
         <div><a (click)="routeUiService.updateOtpMethod(OtpMethod.Questions)">I don't have a mobile number</a></div>
       }
 

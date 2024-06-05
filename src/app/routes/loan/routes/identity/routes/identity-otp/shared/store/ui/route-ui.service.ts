@@ -9,8 +9,17 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class RouteUiService {
   otpMethod$ = new BehaviorSubject(Models.OtpMethod.SMS);
+  editingPhoneNumber$ = new BehaviorSubject(false);
 
   updateOtpMethod(method: Models.OtpMethod) {
     this.otpMethod$.next(method);
+  }
+
+  editPhoneNumber() {
+    this.editingPhoneNumber$.next(true);
+  }
+
+  cancelEditPhoneNumber() {
+    this.editingPhoneNumber$.next(false);
   }
 }

@@ -6,17 +6,11 @@
     <h1>Verify your identity</h1>
     <p>Enter the six-digit passcode sent to:</p>
 
-    <div class="phone">
-      <span>{{ loanApiService.phoneNumber$ | async | phoneNumber }}</span>
-      <a class="edit">
-        <app-icons icon="pencil" />
-        Edit
-      </a>
-    </div>
+    <app-otp-editable-phone />
 
     <div>[FORM HERE]</div>
 
-    <div class="cta"><p-button label="Submit Passcode" (onClick)="verifyOtp()" [rounded]="true" /></div>
+    <div class="cta"><p-button label="Submit Passcode" (onClick)="verifyOtp()" [rounded]="true" [disabled]="routeUiService.editingPhoneNumber$ | async" /></div>
     <div><a (click)="resendPasscode()">Resend My Code</a></div>
   }
   @case (LoadingState.Error) {

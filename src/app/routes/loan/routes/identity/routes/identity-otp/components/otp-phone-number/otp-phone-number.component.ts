@@ -1,7 +1,7 @@
 import { Models } from '$shared';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { RouteUiService } from 'src/app/routes/loan/routes/identity/routes/identity-otp/shared/store/ui/route-ui.service';
 import { RouteApiService } from 'src/app/routes/loan/shared/store/api/route-api.service';
+import { RouteUiService } from '../..//shared/store/ui/route-ui.service';
 
 @Component({
   selector: 'app-otp-phone-number',
