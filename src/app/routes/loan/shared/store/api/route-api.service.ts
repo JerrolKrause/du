@@ -25,6 +25,9 @@ export class RouteApiService {
   phoneNumber$ = new BehaviorSubject<string | undefined>(undefined);
   phoneNumberErrorMessage$ = new BehaviorSubject<string>('');
 
+  sendOtpState$ = new BehaviorSubject<Models.LoadingState>(Models.LoadingState.Unloaded);
+  sendOtpErrorMessage$ = new BehaviorSubject<string>('');
+
   requiresOtp$ = this.otpVerified$.asObservable().pipe(
     map(otpVerified => (undefined === otpVerified ? undefined : !otpVerified)),
     distinctUntilChanged(),
@@ -104,6 +107,19 @@ export class RouteApiService {
       this.phoneNumber$.next(phoneNumber);
       this.phoneNumberLoadingState$.next(Models.LoadingState.Success);
     }, 750);
+  }
+
+  sendOtp() {
+    this.sendOtpState$.next(Models.LoadingState.Loading);
+    this.sendOtpErrorMessage$.next('');
+
+    setTimeout(() => {
+      this.sendOtpState$.next(Models.LoadingState.Success);
+    }, 750);
+  }
+
+  resendOtp() {
+    this.sendOtp();
   }
 
   verifyOtp() {
