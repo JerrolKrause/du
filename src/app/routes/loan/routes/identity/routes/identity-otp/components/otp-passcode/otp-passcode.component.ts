@@ -1,5 +1,6 @@
 import { Models } from '$shared';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouteUiService } from 'src/app/routes/loan/routes/identity/routes/identity-otp/shared/store/ui/route-ui.service';
 import { RouteApiService } from 'src/app/routes/loan/shared/store/api/route-api.service';
@@ -13,6 +14,10 @@ import { RouteApiService } from 'src/app/routes/loan/shared/store/api/route-api.
 export class OtpPasscodeComponent implements OnInit {
   protected readonly LoadingState = Models.LoadingState;
   protected readonly OtpMethod = Models.OtpMethod;
+
+  protected form = new FormGroup({
+    passcode: new FormControl<string>('', { validators: [Validators.required, Validators.minLength(6), Validators.maxLength(6)] }),
+  });
 
   constructor(
     private route: ActivatedRoute,

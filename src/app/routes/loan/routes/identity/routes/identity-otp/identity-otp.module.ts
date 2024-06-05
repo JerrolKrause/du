@@ -2,6 +2,7 @@ import { IconsComponent, LoadingSpinnerComponent, MasterPageModule } from '$comp
 import { SharedModule } from '$shared';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputOtpModule } from 'primeng/inputotp';
@@ -15,7 +16,19 @@ import { RouteUiService } from './shared/store/ui/route-ui.service';
 
 @NgModule({
   declarations: [IdentityOtpComponent, OtpPhoneNumberComponent, OtpPasscodeComponent, OtpQuestionsComponent, OtpEditablePhoneComponent],
-  imports: [CommonModule, routing, SharedModule, MasterPageModule, ButtonModule, CardModule, InputOtpModule, LoadingSpinnerComponent, IconsComponent],
+  imports: [
+    CommonModule,
+    routing,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
+    MasterPageModule,
+    ButtonModule,
+    CardModule,
+    InputOtpModule,
+    LoadingSpinnerComponent,
+    IconsComponent,
+  ],
   providers: [RouteUiService],
 })
 export class IdentityOtpModule {}
