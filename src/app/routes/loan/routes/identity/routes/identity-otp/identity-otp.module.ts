@@ -1,4 +1,5 @@
-import { LoadingSpinnerComponent, MasterPageModule } from '$components';
+import { IconsComponent, LoadingSpinnerComponent, MasterPageModule } from '$components';
+import { SharedModule } from '$shared';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
@@ -11,7 +12,7 @@ import { RouteUiService } from './shared/store/ui/route-ui.service';
 
 @NgModule({
   declarations: [IdentityOtpComponent, OtpPhoneNumberComponent, OtpQuestionsComponent],
-  imports: [CommonModule, routing, MasterPageModule, ButtonModule, CardModule, LoadingSpinnerComponent],
+  imports: [CommonModule, routing, SharedModule, MasterPageModule, ButtonModule, CardModule, LoadingSpinnerComponent, IconsComponent],
   providers: [RouteUiService],
 })
 export class IdentityOtpModule {}

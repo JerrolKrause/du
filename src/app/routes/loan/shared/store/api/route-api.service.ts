@@ -22,7 +22,7 @@ export class RouteApiService {
   updatingVerificationErrorMessage$ = new BehaviorSubject<string>('');
 
   phoneNumberLoadingState$ = new BehaviorSubject<Models.LoadingState>(Models.LoadingState.Unloaded);
-  phoneNumber$ = new BehaviorSubject<number | undefined>(undefined);
+  phoneNumber$ = new BehaviorSubject<string | undefined>(undefined);
   phoneNumberErrorMessage$ = new BehaviorSubject<string>('');
 
   requiresOtp$ = this.otpVerified$.asObservable().pipe(
@@ -91,12 +91,12 @@ export class RouteApiService {
     this.phoneNumberErrorMessage$.next('');
 
     setTimeout(() => {
-      this.phoneNumber$.next(1234567890);
+      this.phoneNumber$.next('1234567890');
       this.phoneNumberLoadingState$.next(Models.LoadingState.Success);
     }, 750);
   }
 
-  updatePhoneNumber(phoneNumber: number) {
+  updatePhoneNumber(phoneNumber: string) {
     this.phoneNumberLoadingState$.next(Models.LoadingState.Loading);
     this.phoneNumberErrorMessage$.next('');
 

@@ -15,6 +15,7 @@ import {
   faExclamationCircle,
   faExclamationTriangle,
   faHome,
+  faPencil,
   faPhone,
   faPlus,
   faPowerOff,
@@ -44,6 +45,7 @@ export type AvailableIcons =
   | 'caret-down'
   | 'bars'
   | 'home'
+  | 'pencil'
   | 'cubes'
   | 'question'
   | 'x'
@@ -81,6 +83,7 @@ export class IconsComponent implements OnInit {
     'caret-down': faCaretDown,
     bars: faBars,
     home: faHome,
+    pencil: faPencil,
     cubes: faCubes,
     x: faX,
     'chevron-left': faChevronLeft,

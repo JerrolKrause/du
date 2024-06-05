@@ -7,9 +7,17 @@
     <h1>Verify your identity</h1>
     <p>To make sure it’s really you, we’ll send a passcode text message to your mobile phone:</p>
 
-    <p><a (click)="routeUiService.updateOtpMethod(OtpMethod.Questions)">I don't have a mobile number</a></p>
+    <div class="phone">
+      <span>{{ loanApiService.phoneNumber$ | async | phoneNumber }}</span>
+      <a class="edit">
+        <app-icons icon="pencil" />
+        Edit
+      </a>
+    </div>
+    <div class="subtext">Messaging and data rates may apply.</div>
 
-    <p-button label="Validate" (onClick)="verifyOtp()" />
+    <div class="cta"><p-button label="Send Passcode" (onClick)="verifyOtp()" [rounded]="true" /></div>
+    <div><a (click)="routeUiService.updateOtpMethod(OtpMethod.Questions)">I don't have a mobile number</a></div>
   }
   @case (LoadingState.Error) {
     <p-card>

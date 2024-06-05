@@ -2,4 +2,5 @@
 <h1>Verify your identity</h1>
 <p>Please answer a few questions about yourself to help us verify your identity.</p>
 
-<a (click)="routeUiService.updateOtpMethod(OtpMethod.SMS)">Send me a text instead</a>
+<div class="cta"><p-button label="Answer questions" (onClick)="verifyOtp()" [rounded]="true" /></div>
+<div><a (click)="routeUiService.updateOtpMethod(OtpMethod.SMS)">Send me a text instead</a></div>
